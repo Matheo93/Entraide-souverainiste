@@ -1,0 +1,24 @@
+{% extends 'front/base.html.twig' %}
+{% block stylesheets %}
+{% endblock %}
+{% block body %}
+
+
+<section id='not-found-section'>
+	<div class='section-container'>
+		<div id='not-found'>
+			<div class='section-background'>
+				<div class='background-image' style='background-image:url({{ asset("assets/img/pages/404/holder-404.jpg") }})'></div>
+				<div class='background-filter'></div>
+			</div>
+			<div class='section-content'>
+				<div class='title'>
+					<h1>Nous sommes indisponibles pour le moment</h1>
+					<p>Veuillez réessayer d'ici quelques minutes.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% endblock %}

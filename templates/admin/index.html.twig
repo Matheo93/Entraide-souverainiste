@@ -1,0 +1,138 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body %}
+
+	<div class='table-admin'>
+		<h2>5 derniers utilisateurs</h2>
+		<div class='table-container'>
+			<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+				<thead>
+					<tr>
+						<th style='width: max-content;padding: 8px 0;'>Email Vérifié</th>
+						<th>Login</th>
+						<th>Roles</th>
+						<th>Enregistré le</th>
+					</tr>
+				</thead>
+				<tbody>
+				{% for user in lastUsers %}
+					{% set userCallable = user.email %}
+						
+					<tr>
+						<td>{{ user.isVerified == "1" ? "<span class='material-icons green'>done</span>" : "<span class='material-icons red'>do_disturb</span>" }}</td>
+						<td>
+								{{ userCallable }}
+								<span style='display:none;'>{{ user.username }}</span>
+						</td>
+						<td>
+						</td>
+						<td>{{ user.registeredAt ? user.registeredAt|date('d/m/Y \à H:i') : '' }}</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="7">il n'y a pas d'utilisateurs</td>
+					</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class='table-admin'>
+		<h2>5 dernières annonces</h2>
+		<div class='table-container'>
+			<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id='last-subscriptions'>
+				<thead>
+					<tr>
+						<th style='width: max-content;padding: 8px 0;'>Utilisateur</th>
+						<th>Titre</th>
+						<th>Catégorie</th>
+						<th>Lieu</th>
+						<th>Actif</th>
+						<th>Jusqu'à</th>
+					</tr>
+				</thead>
+				<tbody>
+				
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+
+
+
+
+
+
+
+
+	<div class='table-admin'>
+		<h2>5 derniers mails envoyés</h2>
+		<div class='table-container'>
+			<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id='last-subscriptions'>
+				<thead>
+					<tr>
+						<th style='width: max-content;padding: 8px 0;'>De</th>
+						<th>Destinataire</th>
+						<th>Titre</th>
+						<th>Envoyé le</th>
+					</tr>
+				</thead>
+				<tbody>
+				{% for mail in lastMails %}
+					{% set user = mail.userReceiver %}
+					{% set userCallable = mail.receiver %}
+						
+					<tr>
+						<td>{{ mail.sender }}</td>
+						<td>
+							<a href='{{ path('admin_user_edit', {'id': user.id}) }}' title='{{ user.username }}'>
+								{{ userCallable }}
+								<span style='display:none;'>{{ user.username }}</span>
+							</a>
+						</td>
+						<td>
+							{{ mail.subject }}
+						</td>
+						<td>
+							{{ mail.sendAt|date('d/m/Y h:i') }}
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="7">il n'y a pas de derniers mails</td>
+					</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+{% block javascripts  %}
+
+{% endblock %}

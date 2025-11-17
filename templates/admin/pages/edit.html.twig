@@ -1,0 +1,31 @@
+{% extends 'admin/base.html.twig' %}
+{% set pageTitle = page.title %}
+{% set title = "Modifier la page de " ~ pageTitle %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+
+{% block body %}
+    <div class='admin-title'>
+	    <h1><i class="material-icons">article</i> {{ title }}</h1>
+    </div>
+			<a href="{{ path('admin_pages') }}" id="back-to-dashboard"> Retour</a>
+
+    <div class='admin-form'>
+        <div class='admin-form-container'>
+        {{ include('admin/pages/editPagesForm.html.twig') }}
+        </div>
+    </div>
+{% endblock %}
+
+
+
+{% block javascripts %}
+	<script src='{{ asset('bundles/fosckeditor/ckeditor.js') }}'></script>
+	<script>
+		CKEDITOR.replace('admin_pages_content');
+	</script>
+
+{% endblock %}

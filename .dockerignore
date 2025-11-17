@@ -1,0 +1,68 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+*.md
+README*
+LICENSE
+CHANGELOG*
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Environnement
+.env.local
+.env.*.local
+.env.bot.local
+INFOS-O2SWITCH.md
+
+# Dependencies (will be installed in Docker)
+/node_modules/
+/vendor/
+
+# Build artifacts
+/public/build/
+npm-debug.log
+yarn-error.log
+
+# Symfony
+/var/
+.phpunit.result.cache
+/phpunit.xml
+
+# Tests
+/tests/
+/.phpunit.cache/
+
+# Docker
+docker-compose.yml
+docker-compose.*.yml
+Dockerfile*
+.dockerignore
+
+# CI/CD
+.github/
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Backups
+backups/
+*.sql
+*.sql.gz
+
+# Temporary files
+*.tmp
+*.temp
+*.pid

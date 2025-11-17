@@ -1,0 +1,80 @@
+<header id='header'>
+	<div class='header-container'>
+		<div class='grid'>
+			<div class='row'>
+				<a href='/'><img src="{{ asset('assets/img/logo.png') }}"></a>
+			</div>
+
+			<div class='row'>
+				<ul>
+					<a href='{{ path('home') }}'><li>Accueil</li></a>
+					<a href='{{ path('search') }}'><li>Rechercher une annonce</li></a>
+					<a href='{{ path('create_announce') }}'><li>Déposer une annonce</li></a>
+					<li>
+					
+						{% if app.user %}
+							<a href='{{ path('account') }}'>Mon compte</a>
+						{% else %}
+							<a href='{{ path('app_login') }}'>Se connecter</a>
+						{% endif %}
+					</li>
+					
+						{% if app.user %}
+							<a href='{{ path('app_logout') }}'><li>Se déconnecter</li></a>
+						{% endif %}
+					<li><a href='{{ path('contact') }}'>Contact</a></li>
+
+						{% if app.user %}
+							{% if "ROLE_ADMIN" in app.user.roles %}
+								<a href='{{ path('admin_home') }}'><li>Administration</li></a>
+							{% endif %}
+						{% endif %}
+
+				</ul>
+			</div>
+
+
+		</div>
+	</div>
+</header>
+
+
+<div id="header-mobile" style='display:none'>
+	<div id="header-mobile-logo">
+		<a href="{{ path('home') }}"><img src="{{ asset('assets/img/logo.png') }}"></a>
+	</div>
+
+
+	<div id="header-mobile-menu">
+		<div id="menu-button">
+			<svg id="i1" class="icon" viewBox="0 0 100 100"><path id="top-line-1" d="M30,37 L70,37"></path><path id="middle-line-1" d="M30,50 L70,50 Z" style="opacity: 1;"></path><path id="bottom-line-1" d="M30,63 L70,63"></path></svg><p>MENU</p>
+		</div>
+		<div class="menu-header-container">
+			<div class="menu-header-container">
+		    	<ul id="menu-1-559d25f" style='display:none'>
+					<li class="">
+						<a href="{{ path('home') }}">Accueil</a>
+					</li>
+					<li class="">
+						<a href="{{ path('search') }}">Rechercher une annonce</a>
+					</li>
+					<li class="">
+						<a href="{{ path('create_announce') }}">Déposer une annonce</a>
+					</li>
+					<li>
+						{% if app.user %}
+							<a href='{{ path('account') }}'>Mon compte</a>
+						{% else %}
+							<a href='{{ path('app_login') }}'>Se connecter</a>
+						{% endif %}
+					</li>
+					<li class="">
+						<a href="{{ path('contact') }}">Contact</a>
+					</li>
+       			</ul>
+		    
+		    </div>
+		</div>
+	</div>
+</div>
+

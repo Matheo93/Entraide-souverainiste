@@ -1,0 +1,111 @@
+# Dockerfile pour Production
+# Multi-stage build pour optimiser la taille de l'image
+
+# ========================================
+# Stage 1: Build des assets (Node.js)
+# ========================================
+FROM node:18-alpine AS node-builder
+
+WORKDIR /app
+
+# Copier les fichiers package
+COPY package*.json ./
+COPY webpack.config.js ./
+
+# Installer les dépendances npm
+RUN npm install --legacy-peer-deps
+
+# Copier les assets sources
+COPY assets/ ./assets/
+
+# Build production
+RUN npm run build
+
+# ========================================
+# Stage 2: Composer dependencies
+# ========================================
+FROM composer:2 AS composer-builder
+
+WORKDIR /app
+
+# Copier composer files
+COPY composer.json composer.lock symfony.lock ./
+
+# Installer les dépendances (production only)
+RUN composer install \
+    --no-dev \
+    --no-scripts \
+    --no-interaction \
+    --prefer-dist \
+    --optimize-autoloader \
+    --classmap-authoritative
+
+# ========================================
+# Stage 3: Image finale de production
+# ========================================
+FROM php:8.2-fpm-alpine
+
+# Installer les extensions PHP nécessaires
+RUN apk add --no-cache \
+    icu-dev \
+    libzip-dev \
+    zip \
+    unzip \
+    git \
+    nginx \
+    supervisor \
+    && docker-php-ext-install \
+    pdo_mysql \
+    intl \
+    opcache \
+    zip
+
+# Installer APCu pour le cache
+RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
+    && pecl install apcu \
+    && docker-php-ext-enable apcu \
+    && apk del .build-deps
+
+# Configuration PHP pour production
+COPY docker/php/php.ini /usr/local/etc/php/conf.d/docker-php-config.ini
+COPY docker/php/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
+
+# Configuration Nginx
+COPY docker/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY docker/nginx/default.conf /etc/nginx/http.d/default.conf
+
+# Configuration Supervisor
+COPY docker/supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# Créer l'utilisateur www-data
+RUN addgroup -g 1000 www && \
+    adduser -D -u 1000 -G www www
+
+WORKDIR /var/www/html
+
+# Copier les dépendances Composer depuis le stage 2
+COPY --from=composer-builder /app/vendor ./vendor
+
+# Copier les assets buildés depuis le stage 1
+COPY --from=node-builder /app/public/build ./public/build
+
+# Copier le code source de l'application
+COPY --chown=www:www . .
+
+# Créer les répertoires nécessaires
+RUN mkdir -p var/cache var/log public/uploads \
+    && chown -R www:www var/ public/uploads \
+    && chmod -R 755 var/ public/uploads
+
+# Générer l'autoloader optimisé
+RUN composer dump-autoload --optimize --classmap-authoritative --no-dev
+
+# Exposer les ports
+EXPOSE 80 9000
+
+# Healthcheck
+HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost/health || exit 1
+
+# Démarrer Supervisor (gère Nginx + PHP-FPM)
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]

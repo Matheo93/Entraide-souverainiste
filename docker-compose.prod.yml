@@ -1,0 +1,143 @@
+version: '3.8'
+
+services:
+  # ========================================
+  # Application Symfony + Nginx + PHP-FPM
+  # ========================================
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    container_name: entraide_app
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - ./var:/var/www/html/var
+      - ./public/uploads:/var/www/html/public/uploads
+    environment:
+      - APP_ENV=prod
+      - APP_DEBUG=0
+    env_file:
+      - .env.local
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      - entraide-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # ========================================
+  # Base de données MySQL
+  # ========================================
+  mysql:
+    image: mariadb:10.5
+    container_name: entraide_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+      MYSQL_DATABASE: ${DATABASE_DBNAME}
+      MYSQL_USER: ${DATABASE_USER}
+      MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "3306:3306"
+    networks:
+      - entraide-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${DATABASE_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ========================================
+  # Redis (Cache et Sessions)
+  # ========================================
+  redis:
+    image: redis:7-alpine
+    container_name: entraide_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - entraide-network
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:-changeme}
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  # ========================================
+  # Bot Discord
+  # ========================================
+  discord-bot:
+    image: node:18-alpine
+    container_name: entraide_discord_bot
+    restart: unless-stopped
+    working_dir: /app
+    volumes:
+      - ./discord-bot.js:/app/discord-bot.js
+      - ./package.json:/app/package.json
+      - ./package-lock.json:/app/package-lock.json
+      - ./node_modules:/app/node_modules
+    environment:
+      - NODE_ENV=production
+    env_file:
+      - .env.bot.local
+    command: sh -c "npm install --legacy-peer-deps && node discord-bot.js"
+    depends_on:
+      - app
+    networks:
+      - entraide-network
+    healthcheck:
+      test: ["CMD", "pgrep", "-f", "discord-bot.js"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ========================================
+  # Nginx Reverse Proxy (Optionnel)
+  # ========================================
+  nginx-proxy:
+    image: nginx:alpine
+    container_name: entraide_nginx_proxy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./docker/nginx-proxy/nginx.conf:/etc/nginx/nginx.conf
+      - ./docker/nginx-proxy/ssl:/etc/nginx/ssl
+      - ./public:/var/www/html/public:ro
+    depends_on:
+      - app
+    networks:
+      - entraide-network
+    profiles:
+      - with-proxy
+
+# ========================================
+# Volumes persistants
+# ========================================
+volumes:
+  mysql-data:
+    driver: local
+  redis-data:
+    driver: local
+
+# ========================================
+# Réseau
+# ========================================
+networks:
+  entraide-network:
+    driver: bridge

@@ -1,0 +1,98 @@
+
+{% extends 'admin/base.html.twig' %}
+{% set title = "Liste des Annonces " %}
+{% block title %}{{ title }}{% endblock %}
+
+
+{% block body %}
+	<div class='admin-title'>
+		<h1><i class="material-icons">article</i> {{ title }}</h1>
+	</div>
+
+
+	<div class='table-admin'>
+		<div class='table-buttons'>
+			<div class='button blue text' id='export_table_announces'>
+				<span><i class="material-icons">file_download</i>Exporter</span>
+			</div>
+
+		</div>
+		<div class='table-search'>
+			<div class='input-field'>
+				<input id="search" type="text" class="validate" colNumber="1">
+				<label for="search">Rechercher</label>
+			</div>
+		</div>
+		<div class='table-container'>
+			<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+				<thead>
+					<tr>
+						<th class='sortable'>N°</th>
+						<th style='width: max-content;padding: 8px 0;' class='sortable'>Email</th>
+						<th class='sortable'>Titre</th>
+						<th class='sortable'>Catégorie</th>
+						<th class='sortable'>Posté le</th>
+						<th class='sortable'>Actif</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+				{% set n = announces|length %}
+				{% for announce in announces %}
+					<tr announce-id="{{ announce.id }}">
+						<td>{{ n }}</td>
+						<td>
+							{% if announce.user != null %}
+								{{ announce.user.email }}
+							{% endif %}
+						</td>
+						<td class='name'>
+							{{ announce.title }}
+						</td>
+						<td class='name'>
+							{% for announceCategory in announce.categories %}
+							{{ announceCategory.name }}
+
+							{% endfor %}
+						</td>
+						<td>
+							{{ announce.dateAdded|date('d/m/Y H:i') }}
+						</td>
+						<td>
+							{% if announce.isActive == 1 %}
+								<span class='material-icons green'>done</span>
+								<span style='display:none'>validé, actif</span>
+							{% else %}
+								<span class='material-icons red'>do_disturb</span>
+								<span style='display:none'>invalide, non-actif</span>
+
+							{% endif %}
+						
+						</td>
+						<td class='actions'>
+							<div class='action'>
+								<a title="Modifier" class='button blue mdl-button mdl-js-button mdl-js-ripple-effect' href="{{ path('admin_announces_edit', {'id': announce.id}) }}" ><i class="material-icons">create</i></a>
+							</div>
+							<div class='action'>
+								<form method="post" action="{{ path('admin_announces_delete', {'id': announce.id}) }}" onsubmit="return confirm('Souhaitez-vous supprimer cette annonce ?');" >
+									<input type="hidden" name="_method" value="DELETE">
+									<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ announce.id) }}">
+									<button title="Supprimer" class='button red mdl-button mdl-js-button mdl-js-ripple-effect'><i class="material-icons">delete</i></button>
+								</form>
+							</div>
+						</td>
+					</tr>
+					{% set n = (n-1) %}
+				{% else %}
+					<tr>
+						<td colspan="7">il n'y a pas d'annonces</td>
+					</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+
+
+{% endblock %}

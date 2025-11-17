@@ -1,0 +1,15 @@
+{{ form_start(form) }}
+
+	<div class="pages-fields">
+		<div class="name-fields">
+			<div id="content-label">
+				{{ form_label(form.content) }}
+			</div>
+				{{ form_widget(form.content) }}
+		</div>
+	</div>
+	
+	<button id='submit-register' type="submit">
+		Publier
+	</button>
+	{{ form_end(form) }}

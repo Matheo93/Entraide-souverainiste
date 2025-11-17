@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr-fr">
+	<head>
+		<meta charset="UTF-8"/>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="theme-color" content="#58A799"/>
+		<link rel="manifest" href="/manifest.json">
+		<meta name="description" content="Entraide Souverainiste. Vous avez besoin d'aide ? Vous recherchez un emploi ? Vous avez une offre à diffuser ? Le Cercle Aristote place à votre disposition un service d'entraide souverainiste. Service gratuit.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+
+		{% block metas %}{% endblock %}
+		<title>{% block title %}Entraide Souverainiste - Cercle Aristote{% endblock %}</title>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+		<style >
+		@font-face { font-family: "CA-Butler Stencil"; font-display: swap;  src: url("{{ asset('assets/fonts/Butler_Bold_Stencil.otf')}}") format("opentype"); }
+		@font-face { font-family: "CA - Interstate"; font-display: swap;  src: url("{{ asset('assets/fonts/Interstate-Regular.otf')}}") format("opentype"); }
+		@font-face { font-family: "CA - Gotham"; font-display: swap;  src: url("{{ asset('assets/fonts/Gotham-Black.otf')}}") format("opentype"); }
+		</style>
+		<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+		<link rel="icon" href="{{ asset('assets/img/cropped-Logo-CA-192x192.png') }}" sizes="192x192" />
+
+
+
+		{% block stylesheets %}{% endblock %}
+        {{ encore_entry_link_tags('MATERIALIZECSS') }}
+        {{ encore_entry_link_tags('LIBSCSS') }}
+        {{ encore_entry_link_tags('HEADERCSS') }}
+        {{ encore_entry_link_tags('FOOTERCSS') }}
+        {{ encore_entry_link_tags('RESPONSIVE') }}
+
+
+	</head>
+	<body>
+
+		{% include 'front/parts/header.html.twig' %}
+
+
+		<div class='flashes-content'>
+		{% for type,messages in app.flashes %}
+			{% for message in messages %}
+			{% set index = loop.index %}
+				<div class='flash type-{{ type }}'>
+					{{ message }}
+				</div>
+			{% endfor %}
+		{% endfor %}
+		</div>
+
+		<div id='page'>
+			<div class='page-container'>
+				<div class='main'>
+					{% block body %}{% endblock %}
+				</div>
+			</div>
+		</div>
+
+		{% include 'front/parts/footer.html.twig' %}
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+		{{ encore_entry_script_tags('AJS') }}
+		{{ encore_entry_script_tags('MATERIALIZEJS') }}
+		{{ encore_entry_script_tags('BASEJS') }}
+		{{ encore_entry_script_tags('RESPONSIVEJS') }}
+
+		{% if isLocationsNeeded is defined %}
+			{% set locations = mainService.getAllLocations() %}
+
+			<script>
+				const locationSources = [
+					{% for location in locations %}
+						{"slug": "{{ location.slug }}","name": "{{ location.name }}","code": "{{location.codeInsee}}"},
+					{% endfor %}];
+			</script>
+
+		{% endif %}
+		{% block javascripts %}{% endblock %}
+
+		{# Chat Widget #}
+		{% include 'front/parts/chat-widget.html.twig' %}
+
+
+	</body>
+</html>

@@ -1,0 +1,108 @@
+html{margin:0;padding:0;margin-top:6em;overflow-x: hidden;}
+body{margin:0;padding:0}
+#header-mobile{display:none}
+
+*{font-family: 'CA-Butler Stencil',Helvetica,Arial,Lucida,sans-serif;}
+
+.flashes-content{}
+.flashes-content .flash{font-size:1.25em;text-align: center;padding:1em;margin-top:2em;}
+
+
+span.cke_bottom.cke_reset_all{display:none!important}
+
+h1{}
+h2{font-size: 1.5em;}
+label{font-size:1em;color:#000}
+
+
+.btn, .btn-small, .btn-large{background-color:#d92b28;border:.1em solid #d92b28;color:#fff;display: flex;align-items: center;justify-content: center;transition: all .2s;font-family: 'CA-Butler Stencil',Helvetica,Arial,Lucida,sans-serif;font-style:normal}
+.btn:focus, .btn-small:focus, .btn-large:focus, .btn-floating:focus{background-color:#d92b28}
+.btn > span.material-symbols-outlined, .btn-small > span.material-symbols-outlined, .btn-large > span.material-symbols-outlined{opacity: 0;color: #fff;margin-right: -1em;transition: all .3s ease-out;}
+.btn:hover, .btn-small:hover, .btn-large:hover{background-color:#fff;color:#d92b28}
+.btn:hover > span.material-symbols-outlined, .btn-small:hover > span.material-symbols-outlined, .btn-large:hover > span.material-symbols-outlined{opacity: 1;margin-right: 0.5em;color:#d92b28}
+
+[type=radio]:checked + span:after, [type=radio].with-gap:checked + span:after{background-color: #d92b28;}
+[type=radio]:checked + span:after, [type=radio].with-gap:checked + span:before, [type=radio].with-gap:checked + span:after{border-color: #d92b28;}
+
+.select-wrapper input.select-dropdown:focus{border-color:#d92b28}
+
+
+input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly])
+{border-bottom: 1px solid #d92b28;box-shadow: 0 1px 0 0 #d92b28;}
+
+.dropdown-content li > a, .dropdown-content li > span{color:#000}
+
+
+a{color:inherit;text-decoration:none}
+
+input:focus{outline:none}
+
+
+ul#autoComplete_list_1{position:absolute;z-index:9;background:#fff;box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);}
+ul#autoComplete_list_1 li{padding: 6px 12px;cursor: pointer;transition:all .3s ease-out;display: flex; justify-content: space-between;}
+ul#autoComplete_list_1 li:hover{background-color: rgba(0, 0, 0, 0.08);}
+ul#autoComplete_list_1 li span{color:#000;font-family: 'CA - Interstate',Helvetica,Arial,Lucida,sans-serif;padding:0px 5px}
+ul#autoComplete_list_1 li span.match{text-overflow: ellipsis; white-space: nowrap; overflow: hidden;}
+ul#autoComplete_list_1 li span.code{display: flex; align-items: center; font-size: 13px; font-weight: 100; text-transform: uppercase; color: rgba(0,0,0,.2);}
+
+
+#g-recaptcha-response {display: block !important;position: absolute;margin: -78px 0 0 0 !important;width: 302px !important;height: 76px !important;z-index: -999999;opacity: 0;}
+
+
+@font-face {
+    font-family: ETmodules;
+    font-display: block;
+    src: url(//www.action-sociale.cerclearistote.fr/assets/fonts/modules.eot);
+    src: url(//www.action-sociale.cerclearistote.fr/assets/fonts/modules.eot?#iefix) format("embedded-opentype"),
+    url(//www.action-sociale.cerclearistote.fr/assets/fonts/modules.woff) format("woff"),
+    url(//www.action-sociale.cerclearistote.fr/assets/fonts/modules.ttf) format("truetype"),
+    url(//www.action-sociale.cerclearistote.fr/assets/fonts/modules.svg#ETmodules) format("svg");
+
+    font-weight: 400;
+    font-style: normal
+}
+
+
+@font-face {
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url(//www.action-sociale.cerclearistote.fr/assets/fonts/fa-regular-400.eot);
+    src: url(//www.action-sociale.cerclearistote.fr/assets/fonts/fa-regular-400.eot?#iefix) format("embedded-opentype"),
+    url(//www.action-sociale.cerclearistote.fr/assets/fonts/fa-regular-400.woff2) format("woff2"),
+    url(//www.action-sociale.cerclearistote.fr/assets/fonts/fa-regular-400.woff) format("woff"),
+    url(//www.action-sociale.cerclearistote.fr/assets/fonts/fa-regular-400.ttf) format("truetype"),
+    url(//www.action-sociale.cerclearistote.fr/assets/fonts/fa-regular-400.svg#fontawesome) format("svg")
+}
+
+@font-face {
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: 900;
+    font-display: block;
+    src: url(//www.action-sociale.cerclearistote.fr/assets/fonts/fa-solid-900.eot);
+    src: url(//www.action-sociale.cerclearistote.fr/assets/fonts/fa-solid-900.eot?#iefix) format("embedded-opentype"),
+    url(//www.action-sociale.cerclearistote.fr/assets/fonts/fa-solid-900.woff2) format("woff2"),
+    url(//www.action-sociale.cerclearistote.fr/assets/fonts/fa-solid-900.woff) format("woff"),
+    url(//www.action-sociale.cerclearistote.fr/assets/fonts/fa-solid-900.ttf) format("truetype"),
+    url(//www.action-sociale.cerclearistote.fr/assets/fonts/fa-solid-900.svg#fontawesome) format("svg")
+}
+
+@font-face {
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url(//www.action-sociale.cerclearistote.fr/assets/fonts/fa-brands-400.eot);
+    src: url(//www.action-sociale.cerclearistote.fr/assets/fonts/fa-brands-400.eot?#iefix) format("embedded-opentype"),
+    url(//www.action-sociale.cerclearistote.fr/assets/fonts/fa-brands-400.woff2) format("woff2"),
+    url(//www.action-sociale.cerclearistote.fr/assets/fonts/fa-brands-400.woff) format("woff"),
+    url(//www.action-sociale.cerclearistote.fr/assets/fonts/fa-brands-400.ttf) format("truetype"),
+    url(//www.action-sociale.cerclearistote.fr/assets/fonts/fa-brands-400.svg#fontawesome) format("svg")
+}
+
+
+
+.autoComplete_wrapper{display:block!important}
+.autoComplete_wrapper input[type=text]::placeholder{color:#000!important}

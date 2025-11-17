@@ -1,0 +1,26 @@
+{% extends 'admin/base.html.twig' %}
+{% set title = "Ajouter une nouvelle catégorie " %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+
+{% block body %}
+	<div class='admin-title'>
+		<h1><i class="material-icons">sort_by_alpha</i> {{ title }}</h1>
+	</div>
+			<a href="{{ path('admin_categories') }}" id="back-to-dashboard"> Retour vers la liste des catégories</a>
+
+		<div class='admin-form'>
+			<div class='admin-form-container'>
+			{{ include('admin/categories/editCategoryForm.html.twig') }}
+			</div>
+		</div>
+	
+{% endblock %}
+
+
+{% block javascripts %}
+
+{% endblock %}

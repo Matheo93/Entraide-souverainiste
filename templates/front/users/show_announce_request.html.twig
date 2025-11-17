@@ -1,0 +1,33 @@
+<form>
+    <div class="form-grid">
+
+        <div class="form-grid-row">
+            <div class="form-row row">
+                <div class="form-label">
+                    <label >Email</label>
+                </div>
+                <div class="form-input input-field">
+                    <input type='text' disabled value='{{ announceRequest.data.email }}'>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-label">
+                    <label >Nom - Prénom</label>
+                </div>
+                <div class="form-input">
+                    <input type='text' disabled value='{{ announceRequest.data.name }}  {{ announceRequest.data.firstname }}'>
+                </div>
+            </div>
+
+            <div class="form-row row">
+                <div class="form-label">
+                    <label>Message</label>
+                </div>
+                <div class="form-input input-field input-field col s12">
+                    <textarea disabled>{{ announceRequest.data.message }}</textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

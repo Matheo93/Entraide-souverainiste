@@ -1,0 +1,15 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %}Password Reset Email Sent{% endblock %}
+
+{% block body %}
+{% for message in app.flashes('reset_password_error') %}
+	<div class="flash-notice">
+		{{ message }}
+	</div>
+{% endfor %}
+
+
+	<p>Un email contenant le lien de réinitialisation a été envoyé. Vous pouvez cliquer sur le lien pour réinitialiser votre mot de passe. Ce lien expirera dans {{ tokenLifetime|date('g') }} heure(s).</p>
+	<p>Si vous n'avez pas reçu notre email, essayez de vérifier vos courriers indésirables. Ou sinon vous pouvez <a href="{{ path('app_forgot_password_request') }}">réésayer</a>.</p>
+{% endblock %}

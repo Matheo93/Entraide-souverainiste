@@ -1,0 +1,35 @@
+{% extends 'front/base.html.twig' %}
+
+
+{% block title %}
+	{% set baliseTitle = mainService.getBaliseBy(page.id, 'pages', 'title') %}
+	{% if baliseTitle %}
+		{{ baliseTitle }}
+	{% else %}
+		{{ page.title }}
+	{% endif %}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('PGE') }}
+{% endblock %}
+
+
+
+{% block body %}
+
+<section id='page-section'>
+	<div class='section-container'>
+		<div id='page-container'>
+			<div class='page-title'>
+				<h1>{{ page.title }}</h1>
+			</div>
+			<div class='page-content'>
+				{{ page.content|raw }}
+			</div>
+		</div>
+	</div>
+</section>
+
+{% endblock %}
+

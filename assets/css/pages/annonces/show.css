@@ -1,0 +1,60 @@
+section#show-section{margin:3em 0}
+section#show-section .section-container{max-width: 1200px;margin:auto;}
+section#show-section .section-container .show-annonce{}
+section#show-section .section-container .show-annonce .show-grid{display:grid;grid-template-columns: 50% 50%;}
+section#show-section .section-container .show-annonce .show-grid .show-row{padding:2em}
+section#show-section .section-container .show-annonce .show-grid .show-row .show-background{}
+section#show-section .section-container .show-annonce .show-grid .show-row .show-background img{max-height: 20em;width:-webkit-fill-available;}
+
+section#show-section .section-container .show-annonce .show-grid .show-row .annonce-title{}
+section#show-section .section-container .show-annonce .show-grid .show-row .annonce-title h1{margin:0;font-size:2em;}
+section#show-section .section-container .show-annonce .show-grid .show-row .annonce-title p.post-date{display:inline-block}
+section#show-section .section-container .show-annonce .show-grid .show-row .annonce-title p.post-meta.type{padding:.5em 1.5em;border:1px solid;color:#fff;width:fit-content;margin:0 1em 0 0;display:inline-block;font-size:1em;font-weight:bold}
+section#show-section .section-container .show-annonce .show-grid .show-row .annonce-title p.post-meta.type.offer{background:#2c3055fa}
+section#show-section .section-container .show-annonce .show-grid .show-row .annonce-title p.post-meta.type.proposal{background:#8f2524c9}
+section#show-section .section-container .show-annonce .show-grid .show-row .annonce-content{}
+section#show-section .section-container .show-annonce .show-grid .show-row .annonce-content p{}
+
+section#show-section .section-container .show-annonce .show-grid .show-row .annonce-contact{}
+section#show-section .section-container .show-annonce .show-grid .show-row .annonce-contact a{font-size: 18px;;font-weight: 700;padding: 0.3em 1em;line-height: 1.7em !important;background: #fff;position: relative;border: 2px solid;border-radius: 3px;-webkit-transition: all 0.2s;transition: all 0.2s;color: #c33343;border-color: #d92b28;display: flex;align-items: center;justify-content: center;width:fit-content}
+section#show-section .section-container .show-annonce .show-grid .show-row .annonce-contact a span{opacity:0;color:#fff;margin-right:-1em;transition:all .3s ease-out}
+section#show-section .section-container .show-annonce .show-grid .show-row .annonce-contact a:hover{background-color: #c33343;color:#fff;cursor: pointer;}
+section#show-section .section-container .show-annonce .show-grid .show-row .annonce-contact a:hover span{opacity:1;margin-right:.5em;}
+
+
+
+#dialog{}
+#dialog > div{width: 100%;padding: 2em;max-width: 900px;border-radius:1em}
+#dialog > div > p{margin:0}
+#dialog.dialog-container{position:fixed;top:0;left:0;width:100%;height:100%;text-align:center;z-index:9999;background-color:#00000075;transition:all .3s ease-out;padding-top:5em;overflow: scroll;}
+#dialog.dialog-container > div{background-color:#fff;margin:auto;min-height:0}
+#dialog.dialog-container > div .mdl-card{width: 40% !important;}
+#dialog.dialog-container > div .mdl-card__actions{}
+#dialog.dialog-container > div .mdl-card__actions button{color:#fff;border:.1em solid;box-shadow:none;padding:.5em 1.5em;border-radius:3em;line-height: 1em;margin: 0 10px;cursor:pointer;transition:all .3s ease-out}
+#dialog.dialog-container > div .mdl-card__actions button:hover{background:#fff;}
+#dialog.dialog-container > div .mdl-card__actions button#positive{background-color:#2c3055;border-color:#2c3055;}
+#dialog.dialog-container > div .mdl-card__actions button#positive.disabled{background:#c5c5c5;border-color:#c5c5c5}
+#dialog.dialog-container > div .mdl-card__actions button#positive:hover{background-color:#fff;color:#2c3055;}
+#dialog.dialog-container > div .mdl-card__actions button#negative{background-color:red;border-color: red;}
+#dialog.dialog-container > div .mdl-card__actions button#negative:hover{color:red;}
+
+
+
+#dialog{}
+#dialog form{}
+#dialog form .form-row{display:grid;grid-template-columns: 50% 50%;margin:1em 0}
+#dialog form .form-row label{font-size:1em;color:#000;}
+#dialog form .form-row input{}
+#dialog form .form-row .btn{background:#384043;}
+#dialog form .form-row .btn span{}
+#dialog form .form-row .btn:hover{background:#c33343;}
+#dialog form .form-row textarea{min-height:12em;resize:none}
+#dialog form .form-row .file-path{font-weight: 300;}
+#dialog form .form-row .file-path::placeholder{font-weight: 300;}
+#dialog form .form-submit{margin-top:2em;}
+#dialog form .form-submit button{font-size: 18px;;font-weight: 700;padding: 0.3em 1em;line-height: 1.7em !important;background: #fff;position: relative;border: 2px solid;border-radius: 3px;-webkit-transition: all 0.2s;transition: all 0.2s;color: #c33343;border-color: #d92b28;display: flex;align-items: center;justify-content: center;width:fit-content;margin:auto}
+#dialog form .form-submit button span{opacity:0;color:#fff;margin-right:-1em;transition:all .3s ease-out}
+#dialog form .form-submit button:hover{background-color: #c33343;color:#fff;cursor: pointer;}
+#dialog form .form-submit button:hover span{opacity:1;margin-right:.5em;}
+
+

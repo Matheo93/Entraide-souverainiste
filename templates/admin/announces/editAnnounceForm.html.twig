@@ -1,0 +1,40 @@
+{{ form_start(formAnnounce) }}
+	<div class='admin-edit-form'>
+		<h2>Informations</h2>
+		<div class='admin-edit-form-container'>
+			<div class="informations-column">
+				<div class="informations-row">
+					<div class="information-label">Titre :</div>
+					<div class="information">{{ form_widget(formAnnounce.title) }}</div>
+				</div>
+				<div class="informations-row widget">
+					<div class="information-label">Contenu :</div>
+					<div class="">{{ form_widget(formAnnounce.content) }}</div>
+				</div>
+				<div class="informations-row">
+					<div class="information-label">Catégorie :</div>
+					<div class="information input-field input-field col s12">
+						<select name='formAnnounce[categories]'>
+						{% for choice in formAnnounce.category.vars.choices %}
+							<option {% if choice.data.slug == announce.categories[0].slug %} selected {% endif %}value="{{ choice.value }}">{{ choice.label }}</option>
+						{% endfor %}
+						</select>
+						{% do formAnnounce.category.setRendered %}
+						
+					</div>
+				</div>
+				<div class="informations-row">
+					<div class="information-label">Active :</div>
+					<div class="information">
+					<label>
+					{{ form_widget(formAnnounce.isActive) }}
+					<span></span>
+					</label>
+					</div>
+				</div>
+			</div>
+			<button type="submit">Soumettre les modifications</button>
+		</div>
+
+	</div>
+{{ form_end(formAnnounce) }} 

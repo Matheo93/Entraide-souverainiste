@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>{% block title %}Action Sociale{% endblock %}</title>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+		<style >
+		@font-face { font-family: "CA-Butler Stencil"; font-display: swap;  src: url("{{ asset('assets/fonts/Butler_Bold_Stencil.otf')}}") format("opentype"); }
+		@font-face { font-family: "CA - Interstate"; font-display: swap;  src: url("{{ asset('assets/fonts/Interstate-Regular.otf')}}") format("opentype"); }
+		@font-face { font-family: "CA - Gotham"; font-display: swap;  src: url("{{ asset('assets/fonts/Gotham-Black.otf')}}") format("opentype"); }
+		</style>
+		<link rel="icon" href="{{ asset('assets/img/favicon.png') }}">
+
+		{{ encore_entry_link_tags('MDLCSS') }}
+		{#{{ encore_entry_link_tags('FACSS') }}#}
+		{{ encore_entry_link_tags('MATERIALIZETEST') }}
+		{{ encore_entry_link_tags('MATERIALIZEICONS') }}
+		{{ encore_entry_link_tags('MATERIALIZECSS') }}
+
+
+
+		{{ encore_entry_link_tags('ADMIN_BASECSS') }}
+		{{ encore_entry_link_tags('ADMIN_MAINCSS') }}
+
+
+				
+		<style>
+			*{;outline:none;--green-color: #2c3055;}
+			*:focus, *:active{outline:none;}
+			a{text-decoration:none;color:#d92b28}
+			p a{color:#d92b28}
+			a > *{font-family: 'Inter', sans-serif;}
+			/* CANCEL MATERIALIZE */
+			body select{background-color: #fff;width: auto;padding: 0;border:0;border-radius: 0;height: auto;/*display: block;*/}
+			body input:not([type]),body input[type=text],body input[type=password],body input[type=email],body input[type=url],body input[type=time],body input[type=date],body input[type=datetime],body input[type=datetime-local],body input[type=tel],body input[type=number],body input[type=search],body textarea.materialize-textarea {color: #000;background-color: #fff;margin: 0em;font: 400 13.3333px Arial;padding: 1px 0px;border-width: 2px;border-style: inset;border-color: initial;border-image: initial;width: auto;height: auto;}
+			body label {font-size: initial;color: initial;}
+			.datepicker-controls select.datepicker-select{display:none;}
+			/*input[type="checkbox"]:not(:checked), input[type="checkbox"]:checked {position: absolute;left: -9999px;opacity: 0;}*/
+			input[type="radio"]:checked+label:after, input[type="radio"].with-gap:checked+label:after{background-color: #2c3055;}
+			input[type="radio"]:checked+label:after, input[type="radio"].with-gap:checked+label:before, input[type="radio"].with-gap:checked+label:after{border:2px solid #2c3055}
+			body::-webkit-scrollbar {width: 0.5em;}
+			body::-webkit-scrollbar-track {-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);}
+			body::-webkit-scrollbar-thumb {background-color: #d92b28;outline: 1px solid slategrey;}
+			#page{}
+			#page select:focus{outline:none;}
+			#page > .page-container > .main{min-height: 70vh;}
+			.flashes-content{position: fixed; top: 20% !important; z-index: 9999999; font-size: 2em;max-width: 100%;}
+			.flash{background: #fff;color:#2c3055;border:.1em solid #2c3055;width: fit-content;padding: .25em 1.5em;color: #fff;font-weight: 300;margin: 0 auto .25em ;font-size: .6em;;cursor:pointer;border-radius:2em;box-shadow: 0.1em 0.1em 0.3em #323232;transition:all .3s ease-out;max-width: 100%;line-height: 1.5;text-align: center;}
+			.flash.type-error{border-color: #c0392b;color: #c0392b;}
+			.flash.type-error:hover{color: #fff;background-color: #c0392b;}
+			.flash.type-success{border-color: #2c3055;color: #2c3055;}
+			.flash.type-success:hover{color: #fff;background-color: #2c3055;}
+			.flash.type-alert{border-color: #D9744E;color: #D9744E;}
+			.flash.type-alert:hover{color: #fff;background-color: #D9744E;}
+			#dialog{}
+			#dialog > div{width: 100%;padding: 2em;max-width: 900px;border-radius:1em}
+			#dialog > div > p{margin:0}
+			#dialog.dialog-container{position:fixed;top:0;left:0;width:100%;height:100%;text-align:center;z-index:9999;background-color:#00000075;transition:all .3s ease-out;padding-top:5em;overflow: scroll;}
+			#dialog.dialog-container > div{background-color:#fff;margin:auto;min-height:0}
+			#dialog.dialog-container > div .mdl-card{width: 40% !important;}
+			#dialog.dialog-container > div .mdl-card__actions{}
+			#dialog.dialog-container > div .mdl-card__actions button{color:#fff;border:.1em solid;box-shadow:none;padding:.5em 1.5em;border-radius:3em;line-height: 1em;margin: 0 10px;cursor:pointer;transition:all .3s ease-out}
+			#dialog.dialog-container > div .mdl-card__actions button:hover{background:#fff;}
+			#dialog.dialog-container > div .mdl-card__actions button#positive{background-color:#2c3055;border-color:#2c3055;}
+			#dialog.dialog-container > div .mdl-card__actions button#positive.disabled{background:#c5c5c5;border-color:#c5c5c5}
+			#dialog.dialog-container > div .mdl-card__actions button#positive:hover{background-color:#fff;color:#2c3055;}
+			#dialog.dialog-container > div .mdl-card__actions button#negative{background-color:red;border-color: red;}
+			#dialog.dialog-container > div .mdl-card__actions button#negative:hover{color:red;}
+			.fc-border-separate thead tr {position: fixed;margin-bottom: 20px;width: 100%;}
+			.fc-border-separate thead tr th{width:80px;}
+			.fc-border-separate th.fc-last, .fc-border-separate td.fc-last{border-right-width: 0px;}
+			.anchor{position:relative;left:0;width:100%;height:1px;}
+			.tooltip{position: absolute;z-index: 999;background: #fff;padding: .5em 1em;border: .1em solid orange;margin-top: .5em;}
+			.tooltip:before{content:"";display:block;}
+		</style>
+
+		
+
+		{% block stylesheets %}{% endblock %}
+	</head>
+	<body style='background-color:#f0f0f1'>
+		{% include 'admin/parts/header.html.twig' %}
+
+
+		<div class='flashes-content'>
+			{% for type,messages in app.flashes %}
+				{% for message in messages %}
+				{% set index = loop.index %}
+					<div class='flash type-{{ type }}'>
+						{{ message }}
+					</div>
+				{% endfor %}
+			{% endfor %}
+		</div>
+
+		<div id='page'>
+			<div class='page-container'>
+				<div class='main'>
+					{% block body %}{% endblock %}
+				</div>
+			</div>
+		</div>
+
+		{% include 'admin/parts/footer.html.twig' %}
+
+		<script>
+			{#const ADD_MAIL_FORM_PATH  = "{{ path('admin_mails_get_form_path')  }}"
+			const GET_MAIL_PREVIEW = "{{ path('admin_mails_show_preview') }}"
+			const APROUVE_USER_EMAIL  = "{{ path('admin_user_email_approuve')  }}"
+			const UNAPROUVE_USER_EMAIL  = "{{ path('admin_user_email_unapprouve')  }}"#}
+		
+			const EXPORT_USER_TABLE = "{{ path('admin_users_export_table') }}";
+			const EXPORT_ANNOUNCES_TABLE = "{{ path('admin_announces_export_table') }}";
+			const EXPORT_ANNOUNCES_REQUESTS_TABLE = "{{ path('admin_announces_requests_export_table') }}";
+			const GET_ANNOUNCE_REQUEST_INFOS = "{{ path('admin_announces_requests_get_infos') }}";
+			const DISABLE_ADMIN_PATH = "{{ path('disable_admin_path') }}"
+		</script>
+
+
+		{{ encore_entry_script_tags("JQUERY") }}
+		{{ encore_entry_script_tags("JQUERYUI") }}
+		{{ encore_entry_script_tags("MDLJS") }}
+		{{ encore_entry_script_tags("MATERIALIZEJSORIGIN") }}
+
+		{{ encore_entry_script_tags("ADMIN_BASEJS") }}
+		{{ encore_entry_script_tags("ADMIN_MAINJS") }}
+		{{ encore_entry_script_tags("ADMIN_BUTTONSJS") }}
+	
+		{% block javascripts %}{% endblock %}
+	</body>
+</html>

@@ -1,0 +1,20 @@
+{% extends 'admin/base.html.twig' %}
+{% set title = "Modifier la balise " %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+
+{% block body %}
+    <div class='admin-title'>
+	    <h1><i class="material-icons">code</i> {{ title ~ balise.name|capitalize  }} de <span>{{ mainService.getPage(balise.typeId).title }} </span></h1>
+    </div>
+			<a href="{{ path('admin_seo') }}" id="back-to-dashboard"> Retour</a>
+
+    <div class='admin-form'>
+        <div class='admin-form-container'>
+    	    {{ include('admin/balises/_formEdit.html.twig') }}
+        </div>
+    </div>
+{% endblock %}

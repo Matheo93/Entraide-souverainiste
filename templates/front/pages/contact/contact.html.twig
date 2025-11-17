@@ -1,0 +1,64 @@
+{% extends 'front/base.html.twig' %}
+
+
+{% block title %} Contactez-nous {% endblock %}
+
+{% block stylesheets %}
+	{{ encore_entry_link_tags('CONTACT') }}
+{% endblock %}
+
+
+{% block body %}
+	<section id='title-section'>
+		<div class='section-container'>
+			<div class='contact-title'>
+				<h1>Contactez-nous</h1>
+			</div>
+		</div>
+	</section>
+
+	<section id='contact-section'>
+		<div class='section-container'>
+			<div id='contact-form'>
+				<div class='contact-form-container'>
+					{{ form_start(contactForm) }}
+
+						{% set inputs = ["firstname", "name", "phone", "email"] %}
+
+						{% for key,child in contactForm.children %}
+							{% if key in inputs %}
+								<div class='form-row'>
+									<div class='form-label'>
+										{{ form_label(child) }}
+									</div>
+									<div class='form-input'>
+										{{ form_widget(child) }}
+									</div>
+								</div>
+							{% endif %}
+						{% endfor %}
+
+						<div class='form-row block'>
+							<div class='form-label'>
+								{{ form_label(contactForm.message) }}
+							</div>
+							<div class='form-input'>
+								{{ form_widget(contactForm.message) }}
+							</div>
+						</div>
+						<div class="g-recaptcha" data-sitekey="6LfpY3omAAAAAJPTrY9_1Kvlwjwpy-3_iQbB41fz"></div>
+
+						<div class='form-submit'>
+							<button type='submit'><span class="material-symbols-outlined">send</span> Envoyer ma demande de contact</button>
+						</div>
+					{{ form_end(contactForm) }}
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}
+
+
+{% block javascripts %}
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{% endblock %}

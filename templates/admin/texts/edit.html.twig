@@ -1,0 +1,27 @@
+{% extends 'admin/base.html.twig' %}
+{% set title = "Modifier le texte " %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+
+{% block body %}
+    <div class='admin-title'>
+	    <h1><i class="material-icons">title</i> {{ title }}</h1>
+    </div>
+
+    <div class='admin-form'>
+        <div class='admin-form-container'>
+        {{ include('admin/texts/editTextsForm.html.twig') }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+	<script src='{{ asset('bundles/fosckeditor/ckeditor.js') }}'></script>
+	<script>
+		CKEDITOR.replace('admin_texts_content');
+	</script>
+
+{% endblock %}

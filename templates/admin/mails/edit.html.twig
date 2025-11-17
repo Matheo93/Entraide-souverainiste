@@ -1,0 +1,20 @@
+{% extends 'admin/base.html.twig' %}
+{% set userName = user.email %}
+{% set title = "Modifier le profil de " ~ userName %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+
+{% block body %}
+    <div class='admin-title'>
+	    <h1><i class="material-icons">people</i> {{ title }}</h1>
+    </div>
+
+    <div class='admin-form'>
+        <div class='admin-form-container'>
+        {{ include('admin/reservations/editReservationForm.html.twig') }}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'front/base.html.twig' %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('SHOWANNONCE') }}
+{% endblock %}
+
+{% block title %}
+Entraide Souverainiste - Cercle Aristote
+{% endblock %}
+
+
+{% block body %}
+
+	<section id='show-section'>
+			<div class='section-container'>
+				<div class='show-annonce'>
+                    <div class='show-grid'>
+                        <div class='show-row'>
+                            <div class='show-background'>
+                                {% set categorySlug = announce.categories[0].slug %}
+                               
+                                {#<img src="{{ asset('assets/img/annonces/'~ categorySlug ~ '.jpg') }}">#}
+                                <img src="{{ asset('assets/img/banniere-cercle-aristote-1300.jpg') }}">
+                            </div>
+                        </div>
+
+                         <div class='show-row'>
+                            <div class='annonce-title'>
+                                <h1>{{ announce.title }}</h1>
+                                {% if announce.isOfferOrProposal is defined %}
+                                    <p class='post-meta type {{ announce.isOfferOrProposal }}'>{{ announce.isOfferOrProposal == "offer" ? "Offre" : "Demande" }}</p>
+                                {% endif %}
+                                <p class='post-date'>Publié le {{ announce.dateAdded|date('d/m/Y') }}</p>
+                            </div>
+
+                            <div class='annonce-content'>
+                                <p>{{ announce.content|raw }}</p>
+
+                            </div>
+
+                            <div class='annonce-contact'>
+                                <a><span class="material-symbols-outlined">mail</span>  Établir le contact</a>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+			</div>
+	</section>
+{% endblock %}
+
+
+{% block javascripts %}
+    <script>
+        const ANNOUNCE_CONTACT_PATH = "{{ path('announce_contact_origin',  {categorySlug: announce.categories[0].slug, slug: announce.slug}) }}"
+
+        const isEmailAvailable = {% if app.user != null %} "{{app.user.email}}" {% else %} false {% endif %};
+    </script>
+
+	{{ encore_entry_script_tags('SHOWANNONCEJS') }}
+{% endblock %}

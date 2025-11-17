@@ -1,0 +1,26 @@
+{% extends 'admin/base.html.twig' %}
+{% set title = "Modifier le profil de " ~ announce.title %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+
+{% block body %}
+	<div class='admin-title'>
+		<h1><i class="material-icons">article</i> {{ title }}</h1>
+	</div>
+			<a href="{{ path('admin_announces') }}" id="back-to-dashboard"> Retour vers la liste des annonces</a>
+
+		<div class='admin-form'>
+			<div class='admin-form-container'>
+			{{ include('admin/announces/editAnnounceForm.html.twig') }}
+			</div>
+		</div>
+	
+{% endblock %}
+
+
+{% block javascripts %}
+
+{% endblock %}

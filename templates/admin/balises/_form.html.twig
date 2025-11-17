@@ -1,0 +1,28 @@
+{{ form_start(form) }}
+
+	<div class="pages-fields">
+		 <div id="title-field" class='input-field col s12'>
+			{{ form_widget(form.name) }}
+			{{ form_label(form.name) }}
+		</div>
+		<div class="name-fields">
+			<div id="content-label">
+				{{ form_label(form.content) }}
+			</div>
+				{{ form_widget(form.content) }}
+		</div>
+		<div id="title-field" class="input-field col s12">
+			{{ form_widget(form.slug) }}
+			{{ form_label(form.slug) }}
+		</div>
+
+		<div id="title-field" class="input-field col s12">
+			{{ form_widget(form.type_id) }}
+			{{ form_label(form.type_id) }}
+		</div>
+	</div>
+	
+	<button id='submit-register' type="submit">
+		Publier
+	</button>
+	{{ form_end(form) }}

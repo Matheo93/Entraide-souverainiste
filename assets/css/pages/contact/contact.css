@@ -1,0 +1,28 @@
+section#title-section{margin:2em 0}
+section#title-section .section-container{}
+section#title-section .section-container .contact-title{}
+section#title-section .section-container .contact-title h1{text-align: center;font-size:2em;}
+
+
+section#contact-section{}
+section#contact-section .section-container{max-width:1600px;margin:2em auto}
+section#contact-section .section-container #contact-form{}
+section#contact-section .section-container #contact-form .contact-form-container{max-width:800px;margin:auto;width:fit-content}
+section#contact-section .section-container #contact-form .contact-form-container form{}
+section#contact-section .section-container #contact-form .contact-form-container form .form-row{display: grid;grid-template-columns: auto auto;margin:1em 0}
+section#contact-section .section-container #contact-form .contact-form-container form .form-row.block{display: block;}
+section#contact-section .section-container #contact-form .contact-form-container form .form-row.block{}
+section#contact-section .section-container #contact-form .contact-form-container form .form-row.block .form-label{margin-bottom: 2em;}
+section#contact-section .section-container #contact-form .contact-form-container form .form-row .form-label{min-width:15em;display:flex;align-items:center;}
+section#contact-section .section-container #contact-form .contact-form-container form .form-row .form-label label{font-size:1em;font-style: italic;}
+section#contact-section .section-container #contact-form .contact-form-container form .form-row .form-input{}
+section#contact-section .section-container #contact-form .contact-form-container form .form-row .form-input input[type=text]{font-size:1em;background: #fff;padding: 0 12px;height: 36px;min-height: 0;line-height: 1;border: 1px solid;border-radius: 0;width: -webkit-fill-available;color: #2c3055;border-color: #000;}
+section#contact-section .section-container #contact-form .contact-form-container form .form-row .form-input textarea{resize:none;min-height:10em}
+
+
+
+section#contact-section .section-container #contact-form .contact-form-container form .form-submit{margin-top:2em}
+section#contact-section .section-container #contact-form .contact-form-container form .form-submit button{font-size: 18px;;font-weight: 700;padding: 0.3em 1em;line-height: 1.7em !important;background: #fff;position: relative;border: 2px solid;border-radius: 3px;-webkit-transition: all 0.2s;transition: all 0.2s;color: #c33343;border-color: #d92b28;display: flex;align-items: center;justify-content: center;}
+section#contact-section .section-container #contact-form .contact-form-container form .form-submit button:hover{background-color: #c33343;color:#fff;cursor: pointer;}
+section#contact-section .section-container #contact-form .contact-form-container form .form-submit button span{opacity:0;color:#fff;margin-right:-1em;transition:all .3s ease-out}
+section#contact-section .section-container #contact-form .contact-form-container form .form-submit button:hover span{opacity:1;margin-right:.5em;}

@@ -1,0 +1,85 @@
+
+{% extends 'admin/base.html.twig' %}
+{% set title = "Liste des Mails envoyés " %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+
+{% block body %}
+	<div class='admin-title'>
+		<h1><i class="material-icons">people</i> {{ title }}</h1>
+	</div>
+
+
+	<div class='table-admin'>
+		<div class='table-buttons'>
+			<div class='button blue' id='add-mail'>
+			<a>
+				<span title="Écrire un mail"><i class="material-icons">add</i></span>
+			</a>
+			</div>
+		</div>
+		<div class='table-search'>
+			<div class='input-field'>
+				<input id="search" type="text" class="validate" colNumber="1">
+				<label for="search">Rechercher</label>
+			</div>
+		</div>
+		<div class='table-container'>
+			<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id='last-subscriptions'>
+				<thead>
+					<tr>
+						<th style='width: max-content;padding: 8px 0;' class='sortable'>Envoyé par</th>
+						<th class='sortable'>Envoyé à</th>
+						<th class='sortable'>Sujet</th>
+						<th class='sortable'>Date</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+				{% for mail in mails %}
+					{% set user = mail.user %}
+					{% if user != null %}
+						{% set userCallable = user.email %}
+					{% else %}
+						{% set userCallable = mail.receiver %}
+					{% endif %}
+
+					<tr mail-id="{{ mail.id }}">
+						<td>{{ mail.sender }}</td>
+						<td>
+						{% if user != null %}
+							<a href='{{ path('admin_user_edit', {'id': user.id}) }}'>
+						{% endif %}
+								<span title='{{ mail.receiver }}'>{{ userCallable }}</span>
+								<span style='display:none'>{{ mail.receiver }}</span>
+							</a>
+						</td>
+						<td>{{ mail.subject }}</td>
+						<td>{{ mail.sendAt|date('d/m/Y H:i') }}</td>
+						<td class='actions'>
+							<div class='action getMailPreview'>
+								<button class='button blue mdl-button mdl-js-button mdl-js-ripple-effect'><i class="material-icons">visibility</i></button>
+							</div>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="7">il n'y a pas de derniers mails</td>
+					</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+
+{% endblock %}
+
+
+
+{% block javascripts %}
+	<script src='{{ asset('bundles/fosckeditor/ckeditor.js') }}'></script>
+{% endblock %}

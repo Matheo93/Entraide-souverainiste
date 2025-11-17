@@ -1,0 +1,21 @@
+twig:
+    globals:
+        users_attachments_directory: '%users_attachments_directory%'
+        default_path: '%kernel.project_dir%/templates'
+        mainService: '@App\Service\MainService'
+        
+
+    paths: 
+        "%kernel.project_dir%/public": public_path
+fos_ck_editor:
+    configs:
+        main_config:
+            toolbar: full
+            language: fr
+            stylesSet: 'pages_styles'
+        user_config:
+            toolbar:
+                - {name: "styles", items: ['-', '-','Bold', 'Italic', 'Underline', '-', 'NumberedList', 'BulletedList', '-', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-'] }
+    styles:
+      pages_styles:
+        - {}

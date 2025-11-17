@@ -1,0 +1,91 @@
+
+{% extends 'admin/base.html.twig' %}
+{% set title = "Liste des Utilisateurs " %}
+{% block title %}{{ title }}{% endblock %}
+
+
+{% block body %}
+	<div class='admin-title'>
+		<h1><i class="material-icons">people</i> {{ title }}</h1>
+	</div>
+
+
+	<div class='table-admin'>
+		<div class='table-buttons'>
+			<div class='button blue text' id='export_table_users'>
+				<span><i class="material-icons">file_download</i>Exporter</span>
+			</div>
+
+		</div>
+		<div class='table-search'>
+			<div class='input-field'>
+				<input id="search" type="text" class="validate" colNumber="1">
+				<label for="search">Rechercher</label>
+			</div>
+		</div>
+		<div class='table-container'>
+			<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+				<thead>
+					<tr>
+						<th style='width: max-content;padding: 8px 0;'>Email Vérifié</th>
+						<th class='sortable'>Login</th>
+						<th class='sortable'>Nb d'annonces</th>
+						<th>Enregistré le</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+				{% for user in users %}
+					{% set userCallable = user.email %}
+					<tr user-id="{{ user.id }}">
+						<td class='emailToVerify' isVerified={{ user.isVerified == "1" ? "true" : "false" }}>{{ user.isVerified == "1" ? "<span class='material-icons green'>done</span>" : "<span class='material-icons red'>do_disturb</span>" }}</td>
+						<td class='name'>
+							{% if "ROLE_ADMIN" in user.roles %}
+								<div class='medal blue disableAdmin' title='Administrateur' data-id="{{ user.id }}">
+									<i class="material-icons">admin_panel_settings</i>
+								</div>
+							{% endif %}
+							<a href='{{ path('admin_user_edit', {'id': user.id}) }}' title='{{ user.username }}'>
+								{{ userCallable }}
+								<span style='display:none;'>{{ user.username }}</span>
+							</a>
+						</td>
+						<td  >
+							{{ user.announces|length }}
+						</td>
+						<td>{{ user.registeredAt ? user.registeredAt|date('d/m/Y \à H:i') : '' }}</td>
+						<td class='actions'>
+							<div class='action'>
+								<a title="Modifier" class='button blue mdl-button mdl-js-button mdl-js-ripple-effect' href="{{ path('admin_user_edit', {'id': user.id}) }}" ><i class="material-icons">create</i></a>
+							</div>
+							<div class='action'>
+								{#<form method="post" action="{{ path('admin_user_delete', {'id': user.id}) }}" onsubmit="return confirm('Souhaitez-vous supprimer cet utilisateur ?');" >
+									<input type="hidden" name="_method" value="DELETE">
+									<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+									<button title="Supprimer" class='button red mdl-button mdl-js-button mdl-js-ripple-effect'><i class="material-icons">delete</i></button>
+								</form>#}
+							</div>
+							{% if "ROLE_ADMIN" in user.roles == false %}
+							<div class='action'>
+								<form method="post" action="{{ path('admin_user_add_admin', {'id': user.id}) }}" onsubmit="return confirm('L'utilisateur {{ user.email }}} deviendra Administrateur');" >
+									<input type="hidden" name="_method" value="POST">
+									<input type="hidden" name="_token" value="{{ csrf_token('add_admin' ~ user.id) }}">
+									<button title="Définir en tant qu'Administrateur" class='button blue mdl-button mdl-js-button mdl-js-ripple-effect'><i class="material-icons">admin_panel_settings</i></button>
+								</form>
+							</div>
+							{% endif %}
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="7">il n'y a pas d'utilisateurs</td>
+					</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+
+
+{% endblock %}

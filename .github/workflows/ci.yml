@@ -1,0 +1,118 @@
+name: CI - Tests & Build
+
+on:
+  pull_request:
+    branches:
+      - master
+      - main
+  push:
+    branches-ignore:
+      - master
+      - main
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mariadb:10.5
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: test_db
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: intl, pdo_mysql, zip, opcache
+          tools: composer, phpunit
+          coverage: xdebug
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install Composer dependencies
+        run: composer install --prefer-dist --no-progress --no-interaction
+
+      - name: Install npm dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Build assets
+        run: npm run build
+
+      - name: Run PHP CS Fixer (dry-run)
+        continue-on-error: true
+        run: |
+          if [ -f .php-cs-fixer.php ]; then
+            composer require friendsofphp/php-cs-fixer --dev
+            vendor/bin/php-cs-fixer fix --dry-run --diff
+          fi
+
+      - name: Run PHPStan (if configured)
+        continue-on-error: true
+        run: |
+          if [ -f phpstan.neon ]; then
+            composer require phpstan/phpstan --dev
+            vendor/bin/phpstan analyse src
+          fi
+
+      - name: Create test database
+        run: |
+          php bin/console doctrine:database:create --env=test || true
+          php bin/console doctrine:migrations:migrate --no-interaction --env=test
+
+      - name: Run PHPUnit tests
+        run: |
+          if [ -f phpunit.xml.dist ]; then
+            vendor/bin/phpunit
+          else
+            echo "No PHPUnit configuration found, skipping tests"
+          fi
+
+      - name: Upload coverage reports
+        if: success()
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage.xml
+          fail_ci_if_error: false
+
+  build-docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image
+        run: |
+          docker build -f Dockerfile.prod -t entraide-souverainiste:test .
+
+      - name: Test Docker image
+        run: |
+          docker run --rm entraide-souverainiste:test php -v
+          docker run --rm entraide-souverainiste:test php bin/console about

@@ -1,0 +1,66 @@
+
+{% extends 'admin/base.html.twig' %}
+{% set title = "Liste des Textes / (Traductions)" %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+
+{% block body %}
+	<div class='admin-title'>
+		<h1><i class="material-icons">title</i> {{ title }}</h1>
+	</div>
+
+
+	<div class='table-admin'>
+		<div class='table-buttons'>
+
+		</div>
+		<div class='table-search'>
+			<div class='input-field'>
+				<input id="search" type="text" class="validate" colNumber="1">
+				<label for="search">Rechercher</label>
+			</div>
+		</div>
+		<div class='table-container'>
+			<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id='last-subscriptions'>
+				<thead>
+					<tr>
+						<th style='width: max-content;padding: 8px 0;' class='sortable'>Id</th>
+						<th class='sortable'>Contenu</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+				{% for text in texts %}
+					<tr>
+						<td>{{ text.id }}</td>
+						<td>
+							{{ text.content|striptags|slice(0,120) }}
+							<span style='display:none;'>{{ text.content|striptags }}</span>
+						</td>
+						<td class='actions'>
+							<div class='action'>
+								<a title="Modifier" class='button blue mdl-button mdl-js-button mdl-js-ripple-effect' href="{{ path('admin_texts_edit', {'id': text.id}) }}" ><i class="material-icons">edit</i></a>
+							</div>
+
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+					</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+
+{% endblock %}
+
+
+
+{% block javascripts %}
+	<script src='{{ asset('bundles/fosckeditor/ckeditor.js') }}'></script>
+{% endblock %}

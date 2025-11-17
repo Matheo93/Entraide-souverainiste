@@ -1,0 +1,119 @@
+{% extends 'front/base.html.twig' %}
+
+{% block stylesheets %}
+	{{ encore_entry_link_tags('ANCE') }}
+{% endblock %}
+
+
+{% block body %}
+
+	<section id='add-annonce-section'>
+			<div class='section-container'>
+				<div class='add-annonce'>
+					<h1>Déposer son annonce</h1>
+
+						<div class='annonce-form'>
+							{{ form_start(form) }}
+								<div class='form-grid'>
+									<div class='form-grid-row'>
+										<h2>Vos informations</h2>
+										{% if app.user == null %}
+										<div class='form-row'>
+											<div class='form-label'>
+												{{ form_label(form.email) }}
+											</div>
+											<div class='form-input'>
+												{{ form_widget(form.email) }}
+											</div>
+										</div>
+										{% endif %}
+
+
+										<div class='form-row'>
+											<div class='form-label'>
+												{{ form_label(form.localisation) }}
+											</div>
+											<div class='form-input'>
+												{{ form_widget(form.localisation) }}
+											</div>
+										</div>
+
+
+
+										<div class='form-row'>
+											<div class='form-label'>
+												{{ form_label(form.isRemote) }}
+											</div>
+											<div class='form-input'>
+												<label>{{ form_widget(form.isRemote) }} <span> </span></label>
+											</div>
+										</div>
+
+									</div>
+									<div class='form-grid-row'>
+										<h2>Votre annonce</h2>
+										<div class='form-row row'>
+											<div class='form-label'>
+												{{ form_label(form.title) }}
+											</div>
+											<div class='form-input input-field'>
+												{{ form_widget(form.title) }}
+											</div>
+										</div>
+
+										<div class='form-row row row-category'>
+											<div class='form-label'>
+												{{ form_label(form.category) }}
+											</div>
+											<div class='form-input input-field input-field col s12'>
+												{{ form_widget(form.category) }}
+											</div>
+										</div>
+
+										<div class='form-row row row-offer block'>
+											<div class='form-label'>
+												{{ form_label(form.offer) }}
+											</div>
+											<div class='form-input input-field input-field col s12'>
+												{% for type in form.offer.children %}
+													<div>
+														<label>{{ form_widget(type) }} <span></span> {{ form_label(type) }}</label>
+													</div>
+												{% endfor %}
+												{% do form.offer.setRendered %}
+											</div>
+										</div>
+
+										<div class='form-row block'>
+											<div class='form-label'>
+												{{ form_label(form.content) }}
+											</div>
+											<div class='form-input'>
+												{{ form_widget(form.content) }}
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class='form-submit'>
+								      <div class="g-recaptcha" data-sitekey="6LfpY3omAAAAAJPTrY9_1Kvlwjwpy-3_iQbB41fz"></div>
+
+									<button type='submit'><span class="material-symbols-outlined">send</span> Soumettre mon annonce à validation</button>
+								</div>
+							{{ form_end(form) }}
+
+						</div>
+				</div>
+			</div>
+	</section>
+{% endblock %}
+
+
+{% block javascripts %}
+ 	<script src="https://www.google.com/recaptcha/api.js"></script>
+	{{ encore_entry_script_tags('ADDANNOUNCEJS') }}
+	<script src='{{ asset('bundles/fosckeditor/ckeditor.js') }}'></script>
+	<script>
+		CKEDITOR.replace('announces_content');
+	</script>
+{% endblock %}

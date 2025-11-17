@@ -1,0 +1,32 @@
+<section id='filters-section'>
+	<div class='section-container'>
+		<form method='post' action='{{ path('search') }}'>
+			<div class='filters'>
+				<div class='filter-input-row'>
+					<label>Rechercher par titre : </label>
+					<input name='searchForm[search]' type='text' placeholder='Rechercher' value='{{ searchTerms.searchTerms }}'>
+					<button class='btn'><span class="material-symbols-outlined">search</span>Rechercher</button>
+				</div>
+				<div class='filter-input-row'>
+					<label>Localisation : </label>
+					<input type='text' id='searchFormLocalisation' name='searchForm[localisation]' placeholder='Localisation' value='{{ searchTerms.localisation }}'>
+				</div>
+				<div class='filter-input-row'>
+					<label>Catégorie : </label>
+					<select id='shuffle-filters' name='searchForm[category]'>
+						<option data-group="none">Tous</option>
+						{% for f in filters %}
+							<option {% if searchTerms.categoryId == f.id %} selected {% endif %} data-group="{{ f.slug }}" value='{{ f.slug }}'>{{ f.name }}</option>
+						{% endfor %}
+					</select>
+				</div>
+				<div class='filter-input-row'>
+					<label style='display:flex;align-items:center;'>Je recherche en distanciel : 
+					<input type='checkbox' name='searchForm[isRemote]' {% if searchTerms.isRemote == true %} checked {% endif %}>
+					<span style='margin-left:1em'></span></label>
+				</div>
+			</div>
+		</form>
+
+	</div>
+</section>

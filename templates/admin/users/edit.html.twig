@@ -1,0 +1,41 @@
+{% extends 'admin/base.html.twig' %}
+{% set title = "Modifier le profil de " ~ user.email %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block stylesheets %}
+	<link href='{{ asset('assets/libs/autocomplete/dist/css/autoComplete.css') }}' rel="stylesheet">
+
+{% endblock %}
+
+
+{% block body %}
+	<div class='admin-title'>
+		<h1><i class="material-icons">people</i> {{ title }}</h1>
+	</div>
+			<a href="{{ path('admin_users') }}" id="back-to-dashboard"> Retour vers la liste des utilisateurs</a>
+
+		<div class='admin-form'>
+			<div class='admin-form-container'>
+			{{ include('admin/users/editUserForm.html.twig') }}
+			</div>
+		</div>
+	
+{% endblock %}
+
+
+{% block javascripts %}
+	<script src='{{ asset('assets/libs/autocomplete/dist/js/autoComplete.min.js') }}'></script>
+	<script src='{{ asset('assets/admin/assets/js/userSEO.js') }}'></script>
+	<script src='{{ asset('assets/admin/assets/js/userAddresses.js') }}'></script>
+
+	{% set locationSource = [] %}
+
+	<script>
+	var ADDRESSES_SOURCE = [];
+	jQuery.post(GET_LOCATIONS_SOURCE_PATH, {}, function(response){
+		ADDRESSES_SOURCE = response.data
+	})
+	
+	</script>
+
+{% endblock %}

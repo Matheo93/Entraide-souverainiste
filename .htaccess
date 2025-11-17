@@ -1,0 +1,45 @@
+# /.htaccess - Sécurité racine du projet
+
+# Interdire l'accès direct aux fichiers sensibles
+<FilesMatch "\.(yml|yaml|env|env\.local|env\.prod|lock|json|sh|sql)$">
+    Require all denied
+</FilesMatch>
+
+# Protéger les répertoires sensibles
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Bloquer l'accès aux répertoires
+    RedirectMatch 404 /\.git
+    RedirectMatch 404 /\.env
+    RedirectMatch 404 /config/
+    RedirectMatch 404 /src/
+    RedirectMatch 404 /var/
+    RedirectMatch 404 /vendor/
+    RedirectMatch 404 /migrations/
+    RedirectMatch 404 /tests/
+    RedirectMatch 404 /node_modules/
+
+    # Rediriger tout vers /public si accès racine
+    # (Uniquement si le domaine pointe vers la racine et non vers /public)
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ /public/$1 [L]
+</IfModule>
+
+# Options de sécurité
+Options -Indexes
+Options -MultiViews
+
+# Bloquer les user-agents malveillants
+<IfModule mod_setenvif.c>
+    SetEnvIfNoCase User-Agent "^libwww-perl*" bad_bot
+    SetEnvIfNoCase User-Agent "^wget" bad_bot
+    SetEnvIfNoCase User-Agent "^EmailSiphon" bad_bot
+    SetEnvIfNoCase User-Agent "^EmailWolf" bad_bot
+    <RequireAll>
+        Require all granted
+        Require not env bad_bot
+    </RequireAll>
+</IfModule>

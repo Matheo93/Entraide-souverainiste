@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes conversations - Action Sociale{% endblock %}
+
+{% block body %}
+<div class="container" style="margin-top: 30px;">
+    <div class="row">
+        <div class="col s12">
+            <h4>Mes conversations</h4>
+
+            {% for message in app.flashes('success') %}
+                <div class="card-panel green lighten-4 green-text text-darken-4">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+            {% for message in app.flashes('error') %}
+                <div class="card-panel red lighten-4 red-text text-darken-4">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+            {% if conversations|length == 0 %}
+                <div class="card-panel grey lighten-4">
+                    <p class="center-align">
+                        <i class="material-icons large grey-text">chat_bubble_outline</i>
+                    </p>
+                    <p class="center-align grey-text">
+                        Vous n'avez pas encore de conversations.
+                    </p>
+                </div>
+            {% else %}
+                <div class="collection">
+                    {% for conversation in conversations %}
+                        {% set otherUser = conversation.userOffrant == app.user ? conversation.userDemandeur : conversation.userOffrant %}
+                        {% set statusColor = {
+                            'EN_ATTENTE_REPONSE': 'orange',
+                            'EN_COURS': 'blue',
+                            'ACTIF': 'green',
+                            'CLOTURE_ACCORD': 'teal',
+                            'CLOTURE_DESACCORD': 'red'
+                        } %}
+
+                        <a href="{{ path('conversation_view', {id: conversation.id}) }}"
+                           class="collection-item avatar">
+                            <i class="material-icons circle {{ statusColor[conversation.status] ?? 'grey' }}">
+                                {% if conversation.status starts with 'CLOTURE' %}
+                                    check_circle
+                                {% else %}
+                                    chat
+                                {% endif %}
+                            </i>
+                            <span class="title">
+                                <strong>{{ conversation.announce.title }}</strong>
+                            </span>
+                            <p>
+                                Avec: {{ otherUser.email }}<br>
+                                <span class="grey-text">
+                                    {{ conversation.messagesCount }} message(s)
+                                    {% if conversation.lastMessageAt %}
+                                        - Dernier: {{ conversation.lastMessageAt|date('d/m/Y H:i') }}
+                                    {% endif %}
+                                </span>
+                            </p>
+                            <span class="secondary-content">
+                                <span class="new badge {{ statusColor[conversation.status] ?? 'grey' }}"
+                                      data-badge-caption="{{ conversation.status|replace({'_': ' '}) }}"></span>
+                            </span>
+                        </a>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

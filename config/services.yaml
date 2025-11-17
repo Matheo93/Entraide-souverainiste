@@ -1,0 +1,54 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+  assets_libs_directory: '%kernel.project_dir%/public/assets/libs/'
+  users_attachments_directory: '%kernel.project_dir%/uploads/users_attachments'
+  users_pp_directory: '%kernel.project_dir%/public/assets/img/users/users_profile_picture'
+  users_pp_directory_uri: '/assets/img/users/users_profile_picture'
+
+
+  list_communes_france: '%kernel.project_dir%/public/assets/libs/sources/cities/france_cities.json'
+
+
+  
+  admin_contact_email: "%env(ADMIN_CONTACT_EMAIL)%"
+  webmaster_contact_email: "%env(DEV_CONTACT_EMAIL)%"
+  dev_contact_email: "%env(DEV_CONTACT_EMAIL)%"
+  discord_moderation_webhook_url: "%env(DISCORD_MODERATION_WEBHOOK_URL)%"
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+            - '../src/Tests/'
+
+    # controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
+    App\Controller\:
+        resource: '../src/Controller/'
+        tags: ['controller.service_arguments']
+
+
+    Symfony\Bridge\Doctrine\Security\RememberMe\DoctrineTokenProvider: ~
+
+    # Discord moderation service
+    App\Service\DiscordModerationService:
+        arguments:
+            $discordModerationWebhookUrl: '%discord_moderation_webhook_url%'
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+

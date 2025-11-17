@@ -1,0 +1,42 @@
+<nav>
+	<ul id='slide-out'class="sidenav">
+		<li>
+			<div class="user-view">
+				<div class="background-filter"></div>
+				<div class="background">
+					<img src="{{ asset('assets/img/banniere-cercle-aristote-1900.jpg') }}">
+				</div>
+				<a href='{{ path('home') }}'><img class="circle" src="{{ asset('assets/img/logo.png') }}"></a>
+
+
+				<a href='{{ path('home') }}'><span>Retour au site</span></a>
+			</div>
+		</li>
+
+		<li><a class="subheader">Utilisateurs</a></li>
+		<li><a href="{{ path('admin_users') }}" class="waves-effect" ><i class="material-icons">people</i>Tous</a></li>
+
+		<li><div class="divider"></div></li>
+		<li><a class="subheader" >Annonces</a></li>
+		<li><a href='{{ path('admin_announces') }}' class="waves-effect" ><i class="material-icons">article</i>Toutes</a></li>
+		<li><a href='{{ path('admin_categories') }}' class="waves-effect" ><i class="material-icons">sort_by_alpha</i>Catégories</a></li>
+		<li><a href='{{ path('admin_announces_requests') }}' class="waves-effect" ><i class="material-icons">chat</i>Réponses</a></li>
+
+		<li><div class="divider"></div></li>
+		<li><a class="subheader">Mails</a></li>
+		<li><a class="waves-effect" ><i class="material-icons">email</i>Tous</a></li>
+
+		<li><div class="divider"></div></li>
+		<li><a class="subheader">Pages</a></li>
+		<li><a class="waves-effect" ><i class="material-icons">article</i>Toutes</a></li>
+		<li><a class="waves-effect" ><i class="material-icons">add</i>Ajouter</a></li>
+
+	</ul>
+	<a data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+	<div class="logo">
+		<a href='{{ path('home') }}'  ><img style="height:2em;" src="{{ asset('assets/img/logo.png') }}"></a>
+
+		<a href='{{ path('home') }}' style='color:#fff'><span>Retour au site</span></a>
+	</div>
+</nav>

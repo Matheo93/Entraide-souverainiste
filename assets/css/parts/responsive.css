@@ -1,0 +1,82 @@
+
+
+
+
+
+@media screen and (max-width: 800px) {
+
+    section#footer .footer-container{display:block}
+
+}
+
+
+
+
+
+@media screen and (max-width: 425px) {
+
+    /* HEADER */
+    header#header{display:none}
+    #header-mobile{display:block!important;max-width:100vw;overflow-x:hidden}
+    #header-mobile #header-mobile-logo{position: fixed;top: 0;left: 0;z-index: 999;background: #fff;height: 80px;width: auto;padding: .5em 0;display:flex;align-items: center;justify-content: center;width: 100%;text-align: left;box-shadow: 0.01em 0.01em 1em #000;z-index: 99;}
+    #header-mobile #header-mobile-logo a{margin-left: 0;margin-right: auto;}
+    #header-mobile #header-mobile-logo img{width: auto!important;height:4em;}
+    #header-mobile #header-mobile-menu {z-index: 999;}
+    #header-mobile #header-mobile-menu #menu-button {position: fixed;top: 0;right: 0;z-index: 995;background: #2c3055;width:auto;}
+    #header-mobile #header-mobile-menu #menu-button .icon {min-width:76px;height: 100%;fill: none;stroke-width: 4;stroke-linecap: round;stroke-linejoin: round;cursor: pointer;stroke:#fff;opacity:.95;}
+    #header-mobile #header-mobile-menu #menu-button p{position: absolute;color: #fff;bottom: .5em;width: 100%;text-align: center;margin: 0;font-size: 1em;font-family:"DM sans", sans-serif}
+    #header-mobile #header-mobile-menu .menu-header-container{}
+    #header-mobile #header-mobile-menu .menu-header-container ul{position: fixed!important;z-index: 994!important;left: 0;padding: 0;margin: 0;list-style: none;background: #434343;width: 100%;height: 100%;top: 0;padding-top: 10em;padding-left: 2em;}
+    #header-mobile #header-mobile-menu .menu-header-container ul li{font-size:2em;line-height:1.5}
+    #header-mobile #header-mobile-menu .menu-header-container ul li a{color: #fff;font-family:"DM sans", sans-serif}
+
+
+
+    /* FOOTER */
+    section#footer .footer-container{display:block}
+
+
+
+    /* HOME */
+    section#login-section .section-container #login .login-container #login-form{border:0}
+    section#homepage .section-container .homepage-container .homepage-content .homepage-title h1{font-size:2em;}
+    section#homepage .section-container .homepage-container .homepage-content .homepage-title h2{font-size:1.5em}
+
+
+
+
+    /* LOGIN */
+    section#login-section .section-container #login{padding:2em 1em}
+    section#login-section .section-container #login h1{font-size:2em}
+    section#login-section .section-container #login .login-container #login-form h3{font-size:1.5em}
+    section#login-section .section-container #login .login-container{display:block}
+    section#login-section .section-container #login .login-container #login-form input.form-control{min-width: auto;}
+
+
+    /* SEARCH */
+    section#filters-section .section-container .filters{display:block}
+
+
+
+    /* ACCOUNT */
+    section#user-section .section-container .user-dashboard h1{font-size: 2em;}
+    section#user-section .section-container .user-dashboard .grid-container{display:block}
+
+    section#user-section .section-container .user-dashboard .grid-container .grid-row .announces-list ul li{display:block;margin:1em 0}
+    section#user-section .section-container .user-dashboard .grid-container .grid-row .announces-list ul li > div:first-child{display:block}
+
+
+    /* ANNONCE */
+    section#show-section .section-container .show-annonce .show-grid{display:block}
+
+
+    /* POST ANNONCE */
+    section#add-annonce-section .section-container .add-annonce .annonce-form form .form-grid{display:block}
+    section#add-annonce-section .section-container .add-annonce .annonce-form form .form-grid .form-grid-row .form-row{display:block}
+
+
+
+    /* DIALOG */
+    #dialog form .form-row{display:block}
+
+}

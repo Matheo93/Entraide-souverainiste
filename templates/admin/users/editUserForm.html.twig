@@ -1,0 +1,14 @@
+{{ form_start(formUser) }}
+	<div class='admin-edit-form'>
+		<h2>Informations</h2>
+		<div class='admin-edit-form-container'>
+			<div class="informations-column">
+				<div class="informations-row">
+					<div class="information-label">E-mail :</div>
+					<div class="information">{{ user.email }}</div>
+				</div>
+			</div>
+			<button type="submit">Soumettre les modifications</button>
+		</div>
+	</div>
+{{ form_end(formUser) }}

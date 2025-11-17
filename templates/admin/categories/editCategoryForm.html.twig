@@ -1,0 +1,20 @@
+{{ form_start(formCategory) }}
+	<div class='admin-edit-form'>
+		<h2>Informations</h2>
+		<div class='admin-edit-form-container'>
+			<div class="informations-column">
+				<div class="informations-row">
+					<div class="information-label">Nom :</div>
+					<div class="information">{{ form_widget(formCategory.name) }}</div>
+				</div>
+				<div class="informations-row">
+					<div class="information-label">Slug :</div>
+					<div class="information">{{ form_widget(formCategory.slug) }}</div>
+				</div>
+				
+			</div>
+			<button type="submit">Soumettre les modifications</button>
+		</div>
+
+	</div>
+{{ form_end(formCategory) }} 

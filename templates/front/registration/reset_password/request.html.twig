@@ -1,0 +1,35 @@
+{% extends 'front/base.html.twig' %}
+{% set titlePage = "Demande de réinitialisation" %}
+
+{% block title %}{{ titlePage }}{% endblock %}
+
+
+{% block stylesheets %}
+	<link rel='stylesheet' href='{{ asset('assets/css/pages/reset-password/reset.css') }}'>
+{% endblock %}
+
+{% block body %}
+	<section id='reset-password-section'>
+		<div class='section-container'>
+			<div id='reset-password'>
+				<div class='reset-password-title'>
+					<h1>{{ titlePage }}</h1>
+				</div>
+
+	
+				<div class='reset-password-content'>
+					{{ form_start(requestForm) }}
+						<div class='form-row'>
+							{{ form_label(requestForm.email) }}
+							{{ form_widget(requestForm.email) }}
+						</div>
+						<div class='form-submit'>
+							<button class="btn btn-primary">Je réinitialise mon mot de passe</button>
+						</div>
+					{{ form_end(requestForm) }}
+				</div>
+			</div>
+		</div>
+	</section>
+	
+{% endblock %}

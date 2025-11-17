@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	{% for url in doctors %}
+		<url>
+			<loc>{{ host ~ url.url}}</loc>
+		</url>
+	{% endfor %}
+	{% for url in mapsPages %}
+		<url>
+			<loc>{{ host ~ url.url}}</loc>
+			{% if url.lastmod is defined %}
+				<lastmod> {{ url.lastmod }} </lastmod>
+			{% endif %}
+
+			{% if url.changefreq is defined %}
+				<changefreq>{{url.changefreq}}</changefreq>
+			{% endif %}
+
+			{% if url.priority is defined %}
+				<priority>{{url.priority}}</priority>
+			{% endif %}
+
+			{% if url.image is defined and url.image is not empty %}
+				<image:image>
+					<image:loc>{%if url.image.loc|replace({hostname:''}) == url.image.loc%}{{hostname}}{{url.image.loc}}{%else%}{{url.image.loc}}{%endif%}</image:loc>
+					<image:title>{{ url.image.title }}</image:title>
+				</image:image>
+			{% endif %}
+		</url>
+	{% endfor %}
+</urlset>

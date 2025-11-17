@@ -1,0 +1,14 @@
+
+section#login-section .section-container #login{padding:4em 0;max-width: 1600px;margin:auto}
+section#login-section .section-container #login h1{text-align: center;}
+section#login-section .section-container #login .login-container{display:grid;align-items:top;justify-content: center;}
+section#login-section .section-container #login .login-container > div{display: flex;align-items: start;justify-content:center;}
+section#login-section .section-container #login .login-container > div h3{font-size: 2em;font-weight: 300;color: #000;margin: 0 0 1em;}
+section#login-section .section-container #login .login-container #login-form{overflow:hidden;}
+section#login-section .section-container #login .login-container #login-form h3{text-align: center;}
+section#login-section .section-container #login .login-container #login-form form{margin:1em 0;}
+section#login-section .section-container #login .login-container #login-form input.form-control{padding:.25em 1em;background:#fff;border:.1em solid #384043;text-align:center;display:block;margin:0 auto 1em;width: auto;min-width: 20em;font-size:1.5em;line-height:2;font-weight:300}
+section#login-section .section-container #login .login-container #login-form input::placeholder{color:#384043}
+section#login-section .section-container #login .login-container #login-form #submit-login{display:block;background: #E02B20;border: .1em solid #FFFFFF;box-sizing: border-box;padding:.5em 1.5em;color:#fff;font-size:1.5em;margin:1em auto;cursor: pointer; width: max-content;font-weight:300}
+section#login-section .section-container #login .login-container #login-form #forgot-password{color:rgba(0, 0, 0, 0.35);font-size:1.2em;font-weight:600;display:block;text-align: center;}
+section#login-section .section-container #login .login-container #login-form #forgot-password:hover{text-decoration:underline}

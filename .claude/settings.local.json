@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(php:*)",
+      "Bash(composer --version)",
+      "Bash(node:*)",
+      "Bash(npm --version)",
+      "Bash(sudo apt:*)",
+      "Bash(sudo apt install:*)",
+      "Bash(export PATH=\"$HOME/.symfony5/bin:$PATH\")",
+      "Bash(symfony check:requirements:*)",
+      "Bash(docker:*)",
+      "Bash(/mnt/c/composer/composer --version)",
+      "Bash(npm install)",
+      "Bash(npm install:*)",
+      "Bash(powershell.exe:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run dev:*)",
+      "Bash(curl:*)",
+      "Bash(docker-compose:*)",
+      "Bash(rm:*)",
+      "Bash(git restore:*)",
+      "Bash(test:*)",
+      "Bash(cat:*)",
+      "Bash(export:*)",
+      "Bash(export SYMFONY_API_URL=\"http://localhost:8080\")",
+      "Bash(openssl rand:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git checkout:*)"
+    ],
+    "deny": [],
+    "ask": [],
+    "additionalDirectories": [
+      "/mnt/c"
+    ]
+  }
+}

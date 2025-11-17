@@ -1,0 +1,31 @@
+{% extends 'admin/base.html.twig' %}
+{% set userName = user.email %}
+
+{% set title = userGender|capitalize ~ " " ~ userName %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+
+{% block body %}
+<div class='admin-title'>
+	<h1><i class="material-icons">people</i> {{ title }}</h1>
+</div>
+
+<div class='admin-form'>
+	<div class='admin-form-container'>
+		<div class="informations-column">
+			<div class="informations-row">
+				<div class="information-label">Rôle de l'utilisateur :</div>
+				<div class="information">{{ userRole }} </div>
+			</div>
+			<div class="informations-row">
+				<div class="information-label">E-mail :</div>
+				<div class="information">{{ user.email }}</div>
+			</div>
+		</div>
+		<a href="{{ path('admin_users') }}" id="back-to-dashboard"> Retour vers la liste des utilisateurs</a>
+	</div>
+</div>
+{% endblock %}

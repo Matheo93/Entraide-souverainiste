@@ -1,0 +1,42 @@
+{{ form_start(formUser) }}
+    <div class='admin-edit-form'>
+        <div class='admin-edit-form-container'>
+            <div class="informations-column">
+                <div class="informations-row">
+                    <div class="information-label">Rôle de l'utilisateur :</div>
+                    <div class="information">{{ userRole }}</div>             
+                </div>                
+                <div class="informations-row">
+                    <div class="information-label">Genre :</div>
+                    <div class="information">{{ form_widget(formUser.gender) }}</div>             
+                </div>
+                <div class="informations-row">
+                    <div class="information-label">Nom :</div>
+                    <div class="information">{{ form_widget(formUser.lastname) }}</div>             
+                </div>
+                <div class="informations-row">
+                    <div class="information-label">Prénom :</div>
+                    <div class="information">{{ form_widget(formUser.firstname) }}</div>             
+                </div>
+                <div class="informations-row">
+                    <div class="information-label">Adresse :</div>
+                    <div class="information">{{ form_widget(formUser.street) }}</div>             
+                </div>
+                <div class="informations-row">
+                    <div class="information-label">Code postal / Ville :</div>
+                    <div class="information">{{ form_widget(formUser.city) }}</div>             
+                </div>
+                <div class="informations-row">
+                    <div class="information-label">N° de téléphone :</div>
+                    <div class="information">{{ form_widget(formUser.phone) }}</div>             
+                </div>
+                <div class="informations-row">
+                    <div class="information-label">E-mail :</div>
+                    <div class="information">{{ user.email }}</div>             
+                </div>
+            </div>
+            <button type="submit">Soumettre les modifications</button>
+            <a href="{{ path('admin_users') }}" id="back-to-dashboard"> Retour vers la liste des utilisateurs</a>
+        </div>
+    </div>
+{{ form_end(formUser) }}

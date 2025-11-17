@@ -1,0 +1,28 @@
+{% extends 'front/base.html.twig' %}
+
+{% block stylesheets %}
+
+{% endblock %}
+
+{% block body %}
+
+
+<section id='not-found-section'>
+	<div class='section-container'>
+		<div id='not-found'>
+			<div class='section-background'>
+				<div class='background-image' style='background-image:url({{ asset("assets/img/pages/404/holder-404.jpg") }})'></div>
+				<div class='background-filter'></div>
+			</div>
+			<div class='section-content' style='min-height:50vh;display:flex;align-items:center;justify-content:center;'>
+				<div class='title'>
+					<h1 style='font-size:2em;text-align:center;'>Nous sommes désolés nous n'avons rien trouvé correspondant à votre demande</h1>
+					{#<p>Nous sommes désolés non n'avons rien trouvé correspondant à votre demande</p>#}
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% endblock %}

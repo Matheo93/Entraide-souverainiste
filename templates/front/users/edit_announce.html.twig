@@ -1,0 +1,62 @@
+{{ form_start(formEdit) }}
+
+    <div class="form-grid">
+
+        <div class="form-grid-row">
+            <div class="form-row row">
+                <div class="form-label">
+                    <label for="announces_title" class="required">Quel est le titre de votre annonce ?</label>
+                </div>
+                <div class="form-input input-field">
+                    {{ form_widget(formEdit.title) }}
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-label">
+                    <label for="announces_isRemote" class="required">Rendre ou bénéficier du service en distanciel</label>
+                </div>
+                <div class="form-input">
+                    <label>{{ form_widget(formEdit.isRemote) }} <span> </span></label>
+                </div>
+            </div>
+
+            <div class="form-row row">
+                <div class="form-label">
+                    <label for="announces_category" class="required">À quoi peut correspondre votre annonce ?</label>
+                </div>
+                <div class="form-input input-field input-field col s12">
+                    {{ form_widget(formEdit.category) }}
+                </div>
+            </div>
+            <div class='form-row row row-offer block'>
+            <div class='form-label'>
+                {{ form_label(formEdit.offer) }}
+            </div>
+            <div class='form-input input-field input-field col s12'>
+                {% for type in formEdit.offer.children %}
+                    <div>
+                        <label>{{ form_widget(type) }} <span></span> {{ form_label(type) }}</label>
+                    </div>
+                {% endfor %}
+                {% do formEdit.offer.setRendered %}
+            </div>
+        </div>
+            <div class="form-row block">
+                <div class="form-label">
+                    <label for="announces_content" class="required">Décrivez votre annonce en détails :</label>
+                </div>
+                <div class="form-input">
+                        {{ form_widget(formEdit.content) }}
+                </div>
+            </div>
+
+            <input type='hidden' name='announceId' value="{{ announce.id }}">
+
+            <div class="form-submit">
+                <button type="submit"><span class="material-symbols-outlined">send</span> Soumettre mon annonce à validation</button>
+            </div>
+
+        </div>
+    </div>
+{{ form_end(formEdit) }}

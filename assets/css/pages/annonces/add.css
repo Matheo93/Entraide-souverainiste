@@ -1,0 +1,32 @@
+section#add-annonce-section{margin:3em 0}
+section#add-annonce-section .section-container{max-width: 1200px;margin:auto;}
+section#add-annonce-section .section-container .add-annonce{}
+section#add-annonce-section .section-container .add-annonce h1{text-align: center;font-size:2em;}
+section#add-annonce-section .section-container .add-annonce .annonce-form{}
+section#add-annonce-section .section-container .add-annonce .annonce-form form{}
+section#add-annonce-section .section-container .add-annonce .annonce-form form .form-grid{display:grid;grid-template-columns: 50% 50%;}
+section#add-annonce-section .section-container .add-annonce .annonce-form form .form-grid .form-grid-row{padding:2em}
+section#add-annonce-section .section-container .add-annonce .annonce-form form .form-grid .form-grid-row:first-child{border-right:1px solid #000}
+section#add-annonce-section .section-container .add-annonce .annonce-form form .form-grid .form-grid-row h2{text-align: left;font-size:1.5em;margin-bottom: 2em;}
+section#add-annonce-section .section-container .add-annonce .annonce-form form .form-grid .form-grid-row h2:after{content:"";display:block;background:#000;margin:1em 0;width:60%;height:1px}
+section#add-annonce-section .section-container .add-annonce .annonce-form form .form-grid .form-grid-row .form-row{display: grid;grid-template-columns: auto auto;margin:1em 0}
+section#add-annonce-section .section-container .add-annonce .annonce-form form .form-grid .form-grid-row .form-row.block{display: block;}
+section#add-annonce-section .section-container .add-annonce .annonce-form form .form-grid .form-grid-row .form-row.block{}
+section#add-annonce-section .section-container .add-annonce .annonce-form form .form-grid .form-grid-row .form-row.block .form-label{margin-bottom: 2em;}
+section#add-annonce-section .section-container .add-annonce .annonce-form form .form-grid .form-grid-row .form-row .form-label{min-width:15em;display:flex;align-items:center;}
+section#add-annonce-section .section-container .add-annonce .annonce-form form .form-grid .form-grid-row .form-row .form-label label{font-size:1em;font-style: italic;}
+section#add-annonce-section .section-container .add-annonce .annonce-form form .form-grid .form-grid-row .form-row .form-input{}
+section#add-annonce-section .section-container .add-annonce .annonce-form form .form-grid .form-grid-row .form-row .form-input input[type=text]{font-size:1em;background: #fff;padding: 0 12px;height: 36px;min-height: 0;line-height: 1;border: 1px solid;border-radius: 0;width: -webkit-fill-available;color: #2c3055;border-color: #000;}
+section#add-annonce-section .section-container .add-annonce .annonce-form form .form-grid .form-grid-row .form-row.block.row-offer{}
+section#add-annonce-section .section-container .add-annonce .annonce-form form .form-grid .form-grid-row .form-row.block.row-offer .form-label{margin-bottom: 0;}
+section#add-annonce-section .section-container .add-annonce .annonce-form form .form-grid .form-grid-row .form-row.block.row-offer .form-input{display: grid;grid-template-columns: auto auto;width: fit-content;}
+section#add-annonce-section .section-container .add-annonce .annonce-form form .form-grid .form-grid-row .form-row.block.row-offer .form-input > div{width: fit-content;margin-right: 2em;}
+section#add-annonce-section .section-container .add-annonce .annonce-form form .form-grid .form-grid-row .form-row.block.row-offer .form-input > div label{display: flex;align-items: center;}
+
+
+
+section#add-annonce-section .section-container .add-annonce .annonce-form form .form-submit{}
+section#add-annonce-section .section-container .add-annonce .annonce-form form .form-submit button{font-size: 18px;;font-weight: 700;padding: 0.3em 1em;line-height: 1.7em !important;background: #fff;position: relative;border: 2px solid;border-radius: 3px;-webkit-transition: all 0.2s;transition: all 0.2s;color: #c33343;border-color: #d92b28;display: flex;align-items: center;justify-content: center;margin-top:2em}
+section#add-annonce-section .section-container .add-annonce .annonce-form form .form-submit button:hover{background-color: #c33343;color:#fff;cursor: pointer;}
+section#add-annonce-section .section-container .add-annonce .annonce-form form .form-submit button span{opacity:0;color:#fff;margin-right:-1em;transition:all .3s ease-out}
+section#add-annonce-section .section-container .add-annonce .annonce-form form .form-submit button:hover span{opacity:1;margin-right:.5em;}

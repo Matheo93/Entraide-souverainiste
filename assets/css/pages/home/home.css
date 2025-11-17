@@ -1,0 +1,35 @@
+section#homepage{}
+section#homepage .section-container{}
+section#homepage .section-container .homepage-container{position:relative;}
+section#homepage .section-container .homepage-container .homepage-background{position:relative;min-height:80vh}
+section#homepage .section-container .homepage-container .homepage-background .homepage-background-image{background-position:center;background-size:cover;background-repeat:no-repeat;position:absolute;left:0;top:0;width:100%;height:100%}
+section#homepage .section-container .homepage-container .homepage-background .homepage-background-filter{background-position:center;background-size:cover;background-repeat:no-repeat;position:absolute;left:0;top:0;width:100%;height:100%;background:#00000073}
+section#homepage .section-container .homepage-container .homepage-content{position:absolute;left:0;top:0;width:100%;margin:auto;height:100%;display:flex;align-items: center;padding:1em 3em}
+section#homepage .section-container .homepage-container .homepage-content .homepage-title{}
+section#homepage .section-container .homepage-container .homepage-content .homepage-title h1{font-size:3em;color:#fff;line-height:1.5em}
+section#homepage .section-container .homepage-container .homepage-content .homepage-title h2{font-size:2.75em;color:#fff;}
+section#homepage .section-container .homepage-container .homepage-content .homepage-title .btnAction{margin:0 1em;display:inline-block;width:fit-content;padding:.5em 1.5em;border:1px solid #2c3055;background:#fff;color:#2c3055}
+section#homepage .section-container .homepage-container .homepage-content .homepage-title .btnAction span{font-size:1.25em}
+section#homepage .section-container .homepage-container .homepage-content .homepage-search{margin:2em 0}
+
+
+
+
+section#homepage .section-container .homepage-container .homepage-content form{position:relative;margin:1em 0}
+section#homepage .section-container .homepage-container .homepage-content .homepage-search > span{color:#fff;font-size:1.25em;display:inline-block}
+section#homepage .section-container .homepage-container .homepage-content form .form-row{display:inline-block;margin:0 .5em;position: relative;}
+section#homepage .section-container .homepage-container .homepage-content form .form-row input{border:0;;padding:.5em 1.5em;background:#fff;border-radius:1em;width:-webkit-fill-available}
+section#homepage .section-container .homepage-container .homepage-content form .form-row input::placeholder{font-size:1em;text-transform: uppercase;font-family:"'CA - Interstate',Helvetica,Arial,Lucida,sans-serif"}
+section#homepage .section-container .homepage-container .homepage-content form .autocomplete-results{max-width:400px;width:100%}
+
+
+.autocomplete {position: relative}
+.autocomplete-results {position: absolute;top: 45px;left: 0;display: none;width: 100%;background: #fff;-webkit-border-radius: 2px;border-radius: 2px;overflow: hidden;z-index: 10;text-align: center;border-radius: 1em;}
+.autocomplete-results.show {display: block}
+.autocomplete-results div {min-height: 35px;padding: 0 1em;border: 1px solid #d1d1d1;line-height: 35px;font-size: 16px;color: #444;border-top-color: transparent;cursor: pointer;-webkit-transition: all .15s linear;transition: all .15s linear}
+.autocomplete-results div strong {font-weight: 600;color: #090909}
+.autocomplete-results div.active,.autocomplete-results div:hover {border-color: #2c3055;color: #2c3055;background: #fcf6f7}
+.autocomplete-results div.active strong,.autocomplete-results div:hover strong {color: #e3647f}
+.autocomplete-input-wrapper {position: relative}
+.autocomplete-submit {cursor: pointer}
+.autocomplete-results-left {text-align: left}

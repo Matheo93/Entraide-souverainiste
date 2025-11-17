@@ -1,0 +1,71 @@
+
+{% extends 'admin/base.html.twig' %}
+{% set title = "Liste des Pages " %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+	<div class='admin-title'>
+		<h1><i class="material-icons">article</i> {{ title }}</h1>
+	</div>
+
+
+	<div class='table-admin'>
+		<div class='table-buttons'>
+		</div>
+		<div class='table-search'>
+			<div class='input-field'>
+				<input id="search" type="text" class="validate" colNumber="1">
+				<label for="search">Rechercher</label>
+			</div>
+		</div>
+		<div class='table-container'>
+			<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id='last-subscriptions'>
+				<thead>
+					<tr>
+						<th style='width: max-content;padding: 8px 0;' class='sortable'>Nom</th>
+						<th class='sortable'>Auteur</th>
+						<th class='sortable'>Slug</th>
+						<th class='sortable'>Publié</th>
+						<th class='sortable'>Date</th>
+						<th >Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+				{% for page in pages %}
+					{% set user = page.author %}
+
+					{% set userCallable = user.email %}
+					{% if user.userInformations != null %}
+						{% set userCallable = user.userInformations.lastname|upper ~ " " ~  user.userInformations.firstname|capitalize %}
+					{% endif %}
+
+					<tr>
+						<td>{{ page.title }}</td>
+
+						<td>
+							<a href='{{ path('admin_user_edit', {'id': user.id}) }}' title='{{ user.username }}'>
+								{{ userCallable }}
+								<span style='display:none;'>{{ user.username }}</span>
+							</a>
+						</td>
+						<td>{{ page.slug }}</td>
+						<td>{{ page.active == "1" ? "<span class='material-icons green'>done</span>" : "<span class='material-icons red'>do_disturb</span>" }}</td>
+						<td>{{ page.registeredAt|date('d/m/Y H:i') }}</td>
+
+
+						<td>
+							<a title="Modifier" class='button blue mdl-button mdl-js-button mdl-js-ripple-effect' href="{{ path('admin_pages_edit', {'id': page.id}) }}" ><i class="material-icons">create</i></a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="7">il n'y a pas de pages</td>
+					</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+
+{% endblock %}

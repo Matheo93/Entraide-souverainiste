@@ -1,0 +1,66 @@
+
+{% extends 'admin/base.html.twig' %}
+{% set title = "Liste des Catégories " %}
+{% block title %}{{ title }}{% endblock %}
+
+
+{% block body %}
+	<div class='admin-title'>
+		<h1><i class="material-icons">sort_by_alpha</i> {{ title }}</h1>
+	</div>
+
+
+	<div class='table-admin'>
+		<div class='table-buttons'>
+			<div class='button blue text'>
+				<a href='{{ path('admin_category_add') }}'><span><i class="material-icons">add</i>Ajouter</span>
+			</div>
+		</div>
+		<div class='table-search'>
+			<div class='input-field'>
+				<input id="search" type="text" class="validate" colNumber="1">
+				<label for="search">Rechercher</label>
+			</div>
+		</div>
+		<div class='table-container'>
+			<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+				<thead>
+					<tr>
+						<th class='sortable'>N°</th>
+						<th style='width: max-content;padding: 8px 0;' class='sortable'>Catégorie</th>
+						<th class='sortable'>Slug</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+				{% set n = categories|length %}
+				{% for category in categories %}
+					<tr category-id="{{ category.id }}">
+						<td>{{ n }}</td>
+						<td>
+							{{ category.name }}
+						</td>
+						<td class='name'>
+							{{ category.slug }}
+						</td>
+						
+						<td class='actions'>
+							<div class='action'>
+								<a title="Modifier" class='button blue mdl-button mdl-js-button mdl-js-ripple-effect' href="{{ path('admin_category_edit', {'id': category.id}) }}" ><i class="material-icons">create</i></a>
+							</div>
+						</td>
+					</tr>
+					{% set n = (n-1) %}
+				{% else %}
+					<tr>
+						<td colspan="7">il n'y a pas de catégories</td>
+					</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+
+
+{% endblock %}

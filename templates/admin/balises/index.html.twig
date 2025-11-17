@@ -1,0 +1,91 @@
+
+{% extends 'admin/base.html.twig' %}
+{% set title = "Liste des Balises " %}
+{% block title %}{{ title }}{% endblock %}
+
+
+
+{% block body %}
+	<div class='admin-title'>
+		<h1><i class="material-icons">code</i> {{ title }}</h1>
+	</div>
+
+
+	<div class='table-admin'>
+		<div class='table-buttons'>
+			<div class="button blue">
+				<a href='{{ path('admin_seo_new') }}'>
+					<span><i class="material-icons">add</i></span>
+				</a>
+			</div>
+		</div>
+		<div class='table-search'>
+			<div class='input-field'>
+				<input id="search" type="text" class="validate" colNumber="1">
+				<label for="search">Rechercher</label>
+			</div>
+		</div>
+		<div class='table-container'>
+			<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id='last-subscriptions'>
+				<thead>
+					<tr>
+						<th style='width: max-content;padding: 8px 0;' class='sortable'>Nom</th>
+						<th class='sortable'>Contenu</th>
+						<th class='sortable'>Type</th>
+						<th class='sortable'>Liée à</th>
+						<th class='sortable'>Modifié le</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+				{% for balise in balises %}
+					<tr>
+						<td title="{{ balise.name|capitalize }}">
+							{% if balise.name == "title" %}
+								<i class="material-icons">title</i>
+								<span style='display:none;'>titre</span>
+							{% else %}
+								<i class="material-icons">description</i>
+							{% endif %}
+								<span style='display:none;'>{{ balise.name }}</span>
+						</td>
+
+						<td>{{ balise.content }}</td>
+						<td>{{ balise.slug|upper }}</td>
+						<td>
+						{% if balise.slug == 'pages' %}
+							{% set page =  mainService.getPage(balise.typeId) %}
+							{% if balise.typeId  != "0" %}
+								<a title="Modifier la page {{ page.title }}" href='{{ path('admin_pages_edit', {'id': page.id}) }}'>{{ page.title }}</a>
+							{% endif %}
+						{% elseif balise.slug == 'articles'%}
+							{{ mainService.getPage(balise.typeId) }}
+						{% endif %}
+						</td>
+						<td>{{ balise.updatedAt|date('d/m/Y H:i') }}</td>
+						<td class='actions'>
+							<div class='action'>
+								{% if balise.slug == 'pages' %}
+									{% if balise.typeId  != "0" %}
+										<a title="Voir" class='button blue mdl-button mdl-js-button mdl-js-ripple-effect' target="_blank" href="{{ path('get_page', {'slug': mainService.getPage(balise.typeId, 'slug').slug}) }}" ><i class="material-icons">visibility</i></a>
+									{% endif %}
+								{% elseif balise.slug == 'articles'%}
+									{{ mainService.getPage(balise.typeId) }}
+								{% endif %}
+							</div>
+							<div class='action'>
+								<a title="Modifier" class='button blue mdl-button mdl-js-button mdl-js-ripple-effect' href="{{ path('admin_seo_edit', {'id': balise.id}) }}" ><i class="material-icons">edit</i></a>
+							</div>
+
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="7">il n'y a pas de balises</td>
+					</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'front/base.html.twig' %}
+
+
+{% block title %}Inscription{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('RGSTRCSS') }}
+
+{% endblock %}
+
+{% block body %}
+
+<section class="registration-form">
+	{{ form_start(registerForm) }}
+	<div class='top-panda'>
+		<div class='top-panda-background'>
+			<div class='top-panda-background-image' style='background-image:url({{ asset('assets/img/homepage/panda.png') }})'></div>
+		</div>
+	</div>
+	<h3>Inscription Patient</h3>
+	<div class="identity-fields">
+		<div id="civility-field">
+		{{ form_label(registerForm.gender) }}
+		{{ form_widget(registerForm.gender) }}
+		</div>
+		<div class="name-fields">
+			<div id="lastname-field">{{ form_widget(registerForm.lastname) }}</div>
+			<div id="firstname-field">{{ form_widget(registerForm.firstname) }}</div>
+		</div>
+	</div>
+	<div class="address-fields">
+		<div id="street-field">
+			{{ form_widget(registerForm.street) }}
+		</div>
+		<div class="city-postal-fields">
+			<div id="postal-field">{{ form_widget(registerForm.postalCode) }}</div>
+			<div id="city-field">{{ form_widget(registerForm.city) }}</div>
+		</div>
+	</div>
+	<div class="mail-phone-fields">
+		<div id="phone-field">{{ form_widget(registerForm.phone) }}</div>
+		<div id="mail-fields">{{ form_widget(registerForm.email.first, { 'attr': { 'placeholder': 'Votre Email' } }) }}</div>
+		<div id="mail-fields">{{ form_widget(registerForm.email.second, { 'attr': { 'placeholder': 'Confirmez votre Email' } }) }}</div>
+	</div>
+	<div id="password-fields">
+		<div>{{ form_widget(registerForm.plainPassword.first, { 'attr': { 'placeholder': 'Votre mot de passe' } }) }}</div>
+		<div>{{ form_widget(registerForm.plainPassword.second, { 'attr': { 'placeholder': 'Confirmez votre mot de passe' } }) }}</div>
+	</div>
+
+
+
+<div class='form-row'>
+		<label>
+			{{ form_widget(registerForm.agreeTerms) }}
+			<span>{{ registerForm.agreeTerms.vars.label }}</span>
+		</label>
+	</div>
+
+	<div class='form-row'>
+		<label>
+			{{ form_widget(registerForm.agreeCGU) }}
+			<span>{{ registerForm.agreeCGU.vars.label }}</span>
+		</label>
+	</div>
+
+	
+	<button id='submit-register' type="submit">
+		S'inscrire
+	</button>
+
+	
+	<div class='bottom-panda'>
+		<div class='bottom-panda-background'>
+			<div class='bottom-panda-background-image' style='background-image:url({{ asset('assets/img/pages/register-praticien/panda-eating.png') }})'></div>
+		</div>
+	</div>
+	{{ form_end(registerForm) }}
+</section>
+		
+{% endblock %}

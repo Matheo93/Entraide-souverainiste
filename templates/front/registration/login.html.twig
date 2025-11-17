@@ -1,0 +1,71 @@
+{% block stylesheets %}
+        {{ encore_entry_link_tags('LOGIN') }}
+
+{% endblock %}
+
+{% block body %}
+
+
+
+<section id="login-section">
+        <div class="section-container">
+            <div id="login">
+                <div class="login-title">
+                    <h1>Se connecter</h1>
+                </div>
+                <div class="login-container">
+                    <div id="login-form">
+                        <div>
+                            <h3>J'ai déjà un compte Action Sociale</h3>
+                            <form method="post" action="{{ path('app_login') }}">
+								<input type="email" value="" name="email" id="inputEmail" class="form-control" required autofocus placeholder="email">
+								<input type="password" name="password" id="inputPassword" class="form-control" required placeholder="mot de passe">
+
+								<input type="hidden" name="_csrf_token"value="{{ csrf_token('authenticate') }}">
+
+                                    <div class="form-row">
+                                        <label>
+                                            <input type="checkbox" id="remember-me" name="_remember_me"> 
+                                            <span>Se souvenir de moi.</span>
+                                        </label>
+                                    </div>
+                                    
+
+                                <button id="submit-login" type="submit">
+                                    Se connecter
+                                </button>
+                                <a id="forgot-password" href="/mot-de-passe-oubli%C3%A9">Mot de passe oublié ?</a>
+                            </form>
+                        
+                        </div>
+                    </div>
+
+                    {#<div id="register-form">
+                        <div>
+                            <h3>Vous êtes nouveau ?</h3>
+                            <a href="/sinscrire" id="new-form">
+                                S'inscrire
+                            </a>
+                        </div>
+                    </div>#}
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

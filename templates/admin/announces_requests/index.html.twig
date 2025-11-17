@@ -1,0 +1,83 @@
+
+{% extends 'admin/base.html.twig' %}
+{% set title = "Liste des Réponses aux Annonces " %}
+{% block title %}{{ title }}{% endblock %}
+
+
+{% block body %}
+	<div class='admin-title'>
+		<h1><i class="material-icons">chat</i> {{ title }}</h1>
+	</div>
+
+
+	<div class='table-admin'>
+		<div class='table-buttons'>
+			<div class='button blue text' id='export_table_announces_requests'>
+				<span><i class="material-icons">file_download</i>Exporter</span>
+			</div>
+
+		</div>
+		<div class='table-search'>
+			<div class='input-field'>
+				<input id="search" type="text" class="validate" colNumber="1">
+				<label for="search">Rechercher</label>
+			</div>
+		</div>
+		<div class='table-container'>
+			<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+				<thead>
+					<tr>
+						<th class='sortable'>N°</th>
+						<th style='width: max-content;padding: 8px 0;' class='sortable'>Email</th>
+						<th class='sortable'>Titre</th>
+						<th class='sortable'>Catégorie</th>
+						<th class='sortable'>Utilisateur rédigeant l'annonce</th>
+						<th class='sortable'>Répondu le</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+				{% set n = announcesRequests|length %}
+				{% for announcesRequest in announcesRequests %}
+					<tr announcesRequest-id="{{ announcesRequest.id }}">
+						<td>{{ n }}</td>
+						<td>
+							{{ announcesRequest.email }}
+						</td>
+						<td class='name'>
+							{{ announcesRequest.announce.title }}
+						</td>
+						<td class='name'>
+							{% for announceCategory in announcesRequest.announce.categories %}
+								{{ announceCategory.name }}
+							{% endfor %}
+						</td>
+						<td>
+							{{ announcesRequest.announce.user.email }}
+						</td>
+						
+						<td>
+							{{ announcesRequest.registeredAt|date('d/m/Y H:i') }}
+						</td>
+						<td class='actions'>
+							<div class='action seeAnnouncesRequests' announceRequestId="{{ announcesRequest.id }}">
+								<a class='button blue mdl-button mdl-js-button mdl-js-ripple-effec' title='Voir les informations'>
+									<i class="material-icons">visibility</i>
+								</a>
+							</div>
+						</td>
+					</tr>
+					{% set n = (n-1) %}
+				{% else %}
+					<tr>
+						<td colspan="7">il n'y a pas de réponses d'annonces</td>
+					</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+
+
+{% endblock %}

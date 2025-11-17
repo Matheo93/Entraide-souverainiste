@@ -1,0 +1,29 @@
+<div class='search-row col-3 type-{{ annonce.isOfferOrProposal }}' data-group="{{ annonce.categories[0].slug }}">
+    <div class='search-row-container'>
+        <div class='search-row-title'>
+            {% set title = annonce.title|length > 40 ? annonce.title|slice(0,40) ~ '...' : annonce.title %}
+            <h2>{{ title }}</h2>
+            <span class='date'>{{ annonce.dateAdded|date('d/m/Y') }}</span>
+            {% if annonce.isRemote %}
+                <span class='isRemote'>Distanciel</span>
+            {% endif %}
+        </div>
+        <div class='search-row-content'>
+
+
+
+            {% set content = annonce.content|striptags %}
+            {% set contentSlice = mainService.sliceContent(content) %}
+            <p>{% if content|length > 150 %}
+                {{ content|slice(0,150)|raw }}...
+            {% else  %}
+                {{  content|raw }}
+            {% endif %}
+        </div>
+        <div class='search-row-actions'>
+            <div class='search-row-action'>
+                <a href='{{ path('get_annonce', {categorySlug: annonce.categories[0].slug, slug: annonce.slug}) }}'><span>Voir l'annonce</span></a>
+            </div>
+        </div>
+    </div>
+</div>

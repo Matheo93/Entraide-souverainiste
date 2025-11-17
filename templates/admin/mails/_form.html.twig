@@ -1,0 +1,21 @@
+{{ form_start(newMailForm) }}
+	<div class="receiver-field">
+		{{ form_label(newMailForm.receiver) }}
+		{{ form_widget(newMailForm.receiver) }}
+	</div>
+	
+	<div class="subject-field">
+		{{ form_label(newMailForm.subject) }}
+		{{ form_widget(newMailForm.subject) }}
+	</div>
+
+
+	<div class="ckeditor-field">
+		{{ form_label(newMailForm.content) }}
+		{{ form_widget(newMailForm.content) }}
+	</div>
+	
+	<button id='submit-register' type="submit" onsubmit="return confirm('Souhaitez-vous réellement envoyer cet Email ?');">
+		Envoyer
+	</button>
+{{ form_end(newMailForm) }}

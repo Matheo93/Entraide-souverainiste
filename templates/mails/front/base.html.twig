@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <style type="text/css">
+			body {margin: 0; padding: 0;}
+			table, td, tr {vertical-align: top; border-collapse: collapse;}
+			* {line-height: inherit; font-family: "Livvic";}
+			a[x-apple-data-detectors=true] {color: inherit !important; text-decoration: none !important;}
+		</style>
+		<style id="media-query" type="text/css">
+			@media (max-width: 740px) {
+				.block-grid, .col {min-width: 320px !important; max-width: 100% !important;	display: block !important;}
+				.block-grid {width: 100% !important;}
+				.col {width: 100% !important;}
+				.col_cont {margin: 0 auto;}
+				img.fullwidth, img.fullwidthOnMobile {max-width: 100% !important;}
+				.no-stack .col {min-width: 0 !important; display: table-cell !important;}
+				.no-stack.two-up .col {width: 50% !important;}
+				.no-stack .col.num2 {width: 16.6% !important;}
+				.no-stack .col.num3 {width: 25% !important;}
+				.no-stack .col.num4 {width: 33% !important;}
+				.no-stack .col.num5 {width: 41.6% !important;}
+				.no-stack .col.num6 {width: 50% !important;}
+				.no-stack .col.num7 {width: 58.3% !important;}
+				.no-stack .col.num8 {width: 66.6% !important;}
+				.no-stack .col.num9 {width: 75% !important;}
+				.no-stack .col.num10 {width: 83.3% !important;}
+				.video-block {max-width: none !important;}
+				.mobile_hide {min-height: 0px; max-height: 0px;	max-width: 0px;	display: none; overflow: hidden; font-size: 0px;}
+				.desktop_hide {display: block !important; max-height: none !important;}
+
+				a{color:inherit;}
+			}
+		</style>
+		<style id="icon-media-query" type="text/css">
+			@media (max-width: 740px) {
+				.icons-inner {text-align: center;}
+				.icons-inner td {margin: 0 auto;}
+			}
+		</style>
+	{% include 'mails/front/parts/stylesheets.html.twig' %}
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<style>
+		@font-face {font-family: 'Livvic';font-style: italic;font-weight: 100;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCt-x1S2hzjrlfXbdtaonXmTMuk.woff2) format('woff2');unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}
+		@font-face {font-family: 'Livvic';font-style: italic;font-weight: 100;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCt-x1S2hzjrlfXbdtaonTmTMuk.woff2) format('woff2');unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+		@font-face {font-family: 'Livvic';font-style: italic;font-weight: 100;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCt-x1S2hzjrlfXbdtaonrmTA.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+		@font-face {font-family: 'Livvic';font-style: italic;font-weight: 200;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCs-x1S2hzjrlfXbdv2s23OafadWQ.woff2) format('woff2');unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}
+		@font-face {font-family: 'Livvic';font-style: italic;font-weight: 200;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCs-x1S2hzjrlfXbdv2s23PafadWQ.woff2) format('woff2');unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+		@font-face {font-family: 'Livvic';font-style: italic;font-weight: 200;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCs-x1S2hzjrlfXbdv2s23BafY.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+		@font-face {font-family: 'Livvic';font-style: italic;font-weight: 300;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCs-x1S2hzjrlfXbduSsG3OafadWQ.woff2) format('woff2');unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}
+		@font-face {font-family: 'Livvic';font-style: italic;font-weight: 300;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCs-x1S2hzjrlfXbduSsG3PafadWQ.woff2) format('woff2');unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+		@font-face {font-family: 'Livvic';font-style: italic;font-weight: 300;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCs-x1S2hzjrlfXbduSsG3BafY.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+		@font-face {font-family: 'Livvic';font-style: italic;font-weight: 400;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCr-x1S2hzjrlfXbdM2knj-SA.woff2) format('woff2');unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}
+		@font-face {font-family: 'Livvic';font-style: italic;font-weight: 400;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCr-x1S2hzjrlfXbdM3knj-SA.woff2) format('woff2');unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+		@font-face {font-family: 'Livvic';font-style: italic;font-weight: 400;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCr-x1S2hzjrlfXbdM5kng.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+		@font-face {font-family: 'Livvic';font-style: italic;font-weight: 500;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCs-x1S2hzjrlfXbdvKsW3OafadWQ.woff2) format('woff2');unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}
+		@font-face {font-family: 'Livvic';font-style: italic;font-weight: 500;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCs-x1S2hzjrlfXbdvKsW3PafadWQ.woff2) format('woff2');unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+		@font-face {font-family: 'Livvic';font-style: italic;font-weight: 500;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCs-x1S2hzjrlfXbdvKsW3BafY.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+		@font-face {font-family: 'Livvic';font-style: italic;font-weight: 600;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCs-x1S2hzjrlfXbdvmtm3OafadWQ.woff2) format('woff2');unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}
+		@font-face {font-family: 'Livvic';font-style: italic;font-weight: 600;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCs-x1S2hzjrlfXbdvmtm3PafadWQ.woff2) format('woff2');unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+		@font-face {font-family: 'Livvic';font-style: italic;font-weight: 600;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCs-x1S2hzjrlfXbdvmtm3BafY.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+		@font-face {font-family: 'Livvic';font-style: italic;font-weight: 700;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCs-x1S2hzjrlfXbduCt23OafadWQ.woff2) format('woff2');unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}
+		@font-face {font-family: 'Livvic';font-style: italic;font-weight: 700;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCs-x1S2hzjrlfXbduCt23PafadWQ.woff2) format('woff2');unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+		@font-face {font-family: 'Livvic';font-style: italic;font-weight: 700;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCs-x1S2hzjrlfXbduCt23BafY.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+		@font-face {font-family: 'Livvic';font-style: italic;font-weight: 900;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCs-x1S2hzjrlfXbdu6tW3OafadWQ.woff2) format('woff2');unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}
+		@font-face {font-family: 'Livvic';font-style: italic;font-weight: 900;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCs-x1S2hzjrlfXbdu6tW3PafadWQ.woff2) format('woff2');unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+		@font-face {font-family: 'Livvic';font-style: italic;font-weight: 900;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCs-x1S2hzjrlfXbdu6tW3BafY.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+		@font-face {font-family: 'Livvic';font-style: normal;font-weight: 100;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCr-x1S2hzjrlffC9M2knj-SA.woff2) format('woff2');unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}
+		@font-face {font-family: 'Livvic';font-style: normal;font-weight: 100;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCr-x1S2hzjrlffC9M3knj-SA.woff2) format('woff2');unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+		@font-face {font-family: 'Livvic';font-style: normal;font-weight: 100;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCr-x1S2hzjrlffC9M5kng.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+		@font-face {font-family: 'Livvic';font-style: normal;font-weight: 200;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCq-x1S2hzjrlffp8Iuul3DcfI.woff2) format('woff2');unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}
+		@font-face {font-family: 'Livvic';font-style: normal;font-weight: 200;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCq-x1S2hzjrlffp8Iuu13DcfI.woff2) format('woff2');unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+		@font-face {font-family: 'Livvic';font-style: normal;font-weight: 200;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCq-x1S2hzjrlffp8IutV3D.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+		@font-face {font-family: 'Livvic';font-style: normal;font-weight: 300;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCq-x1S2hzjrlffw8Euul3DcfI.woff2) format('woff2');unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}
+		@font-face {font-family: 'Livvic';font-style: normal;font-weight: 300;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCq-x1S2hzjrlffw8Euu13DcfI.woff2) format('woff2');unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+		@font-face {font-family: 'Livvic';font-style: normal;font-weight: 300;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCq-x1S2hzjrlffw8EutV3D.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+		@font-face {font-family: 'Livvic';font-style: normal;font-weight: 400;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCp-x1S2hzjrlfXZ-M7inw.woff2) format('woff2');unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}
+		@font-face {font-family: 'Livvic';font-style: normal;font-weight: 400;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCp-x1S2hzjrlfXZuM7inw.woff2) format('woff2');unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+		@font-face {font-family: 'Livvic';font-style: normal;font-weight: 400;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCp-x1S2hzjrlfXaOM7.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+		@font-face {font-family: 'Livvic';font-style: normal;font-weight: 500;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCq-x1S2hzjrlffm8Auul3DcfI.woff2) format('woff2');unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}
+		@font-face {font-family: 'Livvic';font-style: normal;font-weight: 500;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCq-x1S2hzjrlffm8Auu13DcfI.woff2) format('woff2');unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+		@font-face {font-family: 'Livvic';font-style: normal;font-weight: 500;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCq-x1S2hzjrlffm8AutV3D.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+		@font-face {font-family: 'Livvic';font-style: normal;font-weight: 600;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCq-x1S2hzjrlfft8cuul3DcfI.woff2) format('woff2');unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}
+		@font-face {font-family: 'Livvic';font-style: normal;font-weight: 600;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCq-x1S2hzjrlfft8cuu13DcfI.woff2) format('woff2');unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+		@font-face {font-family: 'Livvic';font-style: normal;font-weight: 600;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCq-x1S2hzjrlfft8cutV3D.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+		@font-face {font-family: 'Livvic';font-style: normal;font-weight: 700;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCq-x1S2hzjrlff08Yuul3DcfI.woff2) format('woff2');unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}
+		@font-face {font-family: 'Livvic';font-style: normal;font-weight: 700;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCq-x1S2hzjrlff08Yuu13DcfI.woff2) format('woff2');unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+		@font-face {font-family: 'Livvic';font-style: normal;font-weight: 700;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCq-x1S2hzjrlff08YutV3D.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+		@font-face {font-family: 'Livvic';font-style: normal;font-weight: 900;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCq-x1S2hzjrlff68Quul3DcfI.woff2) format('woff2');unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}
+		@font-face {font-family: 'Livvic';font-style: normal;font-weight: 900;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCq-x1S2hzjrlff68Quu13DcfI.woff2) format('woff2');unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+		@font-face {font-family: 'Livvic';font-style: normal;font-weight: 900;font-display: swap;src: url(https://fonts.gstatic.com/s/livvic/v8/rnCq-x1S2hzjrlff68QutV3D.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+		a{color:inherit!important}
+	</style>
+    <link href="https://fonts.googleapis.com/css2?family=Livvic:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&amp;display=swap" rel="stylesheet">
+
+	<meta charset="utf-8">
+	</head>
+
+	<body class="clean-body" style="margin: 0; padding: 0; -webkit-text-size-adjust: 100%; background-color: #FFFFFF;">
+
+		{% set homeUrl = url('home') %}
+
+        {% include 'mails/front/parts/header.html.twig' %}
+
+		{% include 'mails/front/parts/content.html.twig' %}
+
+        {% include 'mails/front/parts/footer.html.twig' %}				
+				
+	</body>
+</html>

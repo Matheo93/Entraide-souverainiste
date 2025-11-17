@@ -1,0 +1,59 @@
+section#user-section{margin:2em 0}
+section#user-section .section-container{padding:2em;max-width:1600px;margin:auto}
+section#user-section .section-container .user-dashboard{}
+section#user-section .section-container .user-dashboard h1{text-align: center;margin: 0 0 1em;}
+section#user-section .section-container .user-dashboard .grid-container{display:grid;grid-template-columns: 30% 70%;width: fit-content;margin: auto;}
+section#user-section .section-container .user-dashboard .grid-container .grid-row{display:inline-flex;align-items: start;}
+section#user-section .section-container .user-dashboard .grid-container .grid-row h2{}
+section#user-section .section-container .user-dashboard .grid-container .grid-row .form-row{}
+section#user-section .section-container .user-dashboard .grid-container .grid-row .form-row .form-row-label{}
+section#user-section .section-container .user-dashboard .grid-container .grid-row .form-row .form-row-input{}
+section#user-section .section-container .user-dashboard .grid-container .grid-row .form-row .form-row-input input{}
+section#user-section .section-container .user-dashboard .grid-container .grid-row .announces-list{}
+section#user-section .section-container .user-dashboard .grid-container .grid-row .announces-list ul{padding-left:2em;list-style:disc}
+section#user-section .section-container .user-dashboard .grid-container .grid-row .announces-list ul li{list-style-type: disc;display:grid;align-items: center;grid-template-columns: 60% 20% 20%;position:relative;}
+section#user-section .section-container .user-dashboard .grid-container .grid-row .announces-list ul li > div{display: inline-flex;}
+section#user-section .section-container .user-dashboard .grid-container .grid-row .announces-list ul li > div:nth-child(1) span{color: #d4d4d4;float: left;position: absolute;left: -2em;}
+section#user-section .section-container .user-dashboard .grid-container .grid-row .announces-list ul li > div:nth-child(2){justify-content: end;padding:0 2em;cursor: pointer;align-items: center;}
+section#user-section .section-container .user-dashboard .grid-container .grid-row .announces-list ul li > div:nth-child(3){justify-content: end;padding:0;cursor: pointer;align-items: center;}
+section#user-section .section-container .user-dashboard .grid-container .grid-row .announces-list ul li > div > .changeActiveAnnounce{display:inline-flex;align-items: center;}
+section#user-section .section-container .user-dashboard .grid-container .grid-row .announces-list ul li a{}
+section#user-section .section-container .user-dashboard .grid-container .grid-row .announces-list ul li span.symbol{display:inline-flex;align-items: center;margin:0 .25em;}
+section#user-section .section-container .user-dashboard .grid-container .grid-row .announces-list ul li span.symbol.red{background-color: #fff!important;color:red;}
+section#user-section .section-container .user-dashboard .grid-container .grid-row .announces-list ul li span.symbol.green{background-color: #fff!important;color:green;}
+
+section#user-section .section-container .user-dashboard .grid-container .grid-row .announces-requests-list ul{padding-left:2em;list-style:disc}
+section#user-section .section-container .user-dashboard .grid-container .grid-row .announces-requests-list ul li{list-style-type: disc;display:grid;align-items: center;grid-template-columns: 80% 20%;position:relative;line-height:2em}
+section#user-section .section-container .user-dashboard .grid-container .grid-row .announces-requests-list ul li > div{display: inline-flex;margin-right:1em}
+section#user-section .section-container .user-dashboard .grid-container .grid-row .announces-requests-list ul li > div span{cursor: pointer;}
+
+
+#dialog{}
+#dialog > div{width: 100%;padding: 2em;max-width: 900px;border-radius:1em}
+#dialog > div > p{margin:0}
+#dialog.dialog-container{position:fixed;top:0;left:0;width:100%;height:100%;text-align:center;z-index:9999;background-color:#00000075;transition:all .3s ease-out;padding-top:5em;overflow: scroll;}
+#dialog.dialog-container > div{background-color:#fff;margin:auto;min-height:0}
+#dialog{}
+#dialog .admin-form-container{width:fit-content;margin:2em auto}
+#dialog{}
+#dialog form{}
+#dialog form .form-row{display:grid;grid-template-columns: 50% 50%;margin:1em 0}
+#dialog form .form-row.block{display:block}
+#dialog form .form-row .form-label{display:flex;align-items: center;}
+#dialog form .form-row label{font-size:1em;color:#000;}
+#dialog form .form-row input{}
+#dialog form .form-row textarea{min-height:12em}
+
+#dialog .form-submit{}
+#dialog .form-submit button{font-size: 18px;;font-weight: 700;padding: 0.3em 1em;line-height: 1.7em !important;background: #fff;position: relative;border: 2px solid;border-radius: 3px;-webkit-transition: all 0.2s;transition: all 0.2s;color: #c33343;border-color: #d92b28;display: flex;align-items: center;justify-content: center;}
+#dialog .form-submit button:hover{background-color: #c33343;color:#fff;cursor: pointer;}
+#dialog .form-submit button span{opacity:0;color:#fff;margin-right:-1em;transition:all .3s ease-out}
+#dialog .form-submit button:hover span{opacity:1;margin-right:.5em;}
+
+
+#dialog form .form-grid .form-grid-row .form-row.block.row-offer{}
+#dialog form .form-grid .form-grid-row .form-row.block.row-offer .form-label{margin-bottom: 0;}
+#dialog form .form-grid .form-grid-row .form-row.block.row-offer .form-input{display: grid;grid-template-columns: auto auto;width: fit-content;}
+#dialog form .form-grid .form-grid-row .form-row.block.row-offer .form-input > div{width: fit-content;margin-right: 2em;}
+#dialog form .form-grid .form-grid-row .form-row.block.row-offer .form-input > div label{display: flex;align-items: center;}
+

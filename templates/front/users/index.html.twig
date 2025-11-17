@@ -1,0 +1,94 @@
+{% extends 'front/base.html.twig' %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('USERCSS') }}
+{% endblock %}
+
+{% block body %}
+
+	<section id='user-section'>
+		<div class='section-container'>
+			<div class='user-dashboard'>
+				<h1>Votre compte</h1>
+				<div class='grid-container'>
+					<div class='grid-row'>
+						<div class='grid-row-container'>
+							<h2>Vos informations</h2>
+							<div class='form-row'>
+								<div class='form-row-label'>
+									Email : 
+								</div>
+								<div class='form-row-input'>
+									<input style='background:#d4d4d4;cursor:not-allowed;' title='Désactivé' type='text' disabled value='{{ app.user.email }}'>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class='grid-row'>
+						<div class='grid-row-container'>
+							<h2>Vos annonces</h2>
+							<div class='announces-list'>
+								<ul>
+									{% for announce in announcesByUser %}
+										<li data-id="{{ announce.id }}">
+											<div>
+												{% if announce.isActive == 0 %}
+													<span title="Cette annonce est désactivée" class="material-symbols-outlined ">visibility</span>
+												{% endif %}
+												<a href='{{ path('get_annonce', {categorySlug: announce.categories[0].slug, slug: announce.slug}) }}'>{{ announce.title }}</a> - {{ announce.announcesRequests|length }} réponses 
+											</div>
+											<div class='editAnnounce'>
+												<span class="material-symbols-outlined symbol">edit</span>
+												<span class='text'>Éditer</span>
+											</div>
+											<div>
+												<div class='changeActiveAnnounce'>
+													{% if announce.isActive == 1 %}
+													<span class="material-symbols-outlined symbol red">do_not_disturb</span>
+													<span class='text'>Désactiver</span>
+													{% else %}
+													<span class="material-symbols-outlined symbol green">done</span>
+													<span class='text'>Réactiver</span>
+													
+														
+													{% endif %}
+												</span>
+											</div>
+										</li>
+									{% endfor %}
+								</ul>
+								
+							</div>
+
+							<h2>Les réponses</h2>
+							<div class='announces-requests-list'>
+								<ul>
+									{% for announceRequest in announcesRequestsByUser %}
+										<li data-id="{{ announceRequest.id }}">
+											<div>
+												Réponse à {{ announceRequest.announce.title }} par {{ announceRequest.data.name|upper ~ " " ~ announceRequest.data.firstname}} <br/>à {{ announceRequest.registeredAt|date('d/m/Y h:i:s') }}
+											</div>
+											<div class='showAnnounceRequest'>
+												<span title="Voir la réponse" class="material-symbols-outlined ">visibility</span>
+											</div>
+										</li>
+									{% endfor %}
+								</ul>
+								
+							</div>
+						</div>
+					</div>
+		</div>
+	</section>
+
+{% endblock %}
+
+{% block javascripts %}
+	<script>
+		const CHANGE_ACTIVE_ANNOUNCE_PATH = "{{ path('user_announce_change_active') }}"
+		const GET_INFORMATIONS_ANNONCE_PATH = "{{ path('user_get_announce_informations') }}"
+		const GET_ANNOUNCE_REQUEST_PATH = "{{ path('user_get_announce_request_information') }}"
+		const EDIT_INFORMATIONS_ANNONCE_PATH = "{{ path('user_get_announce_informations') }}"
+	</script>
+	{{ encore_entry_script_tags('USERJS') }}
+{% endblock %}
