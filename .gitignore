@@ -35,4 +35,5 @@ bot.log
 ###> Documentation ###
 *.md
 !README.md
+!README-INSTALLATION.md
 ###< Documentation ###
