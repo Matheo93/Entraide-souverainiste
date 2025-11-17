@@ -1,7 +1,10 @@
 $(document).ready(function(){
 
+    // Initialiser le select Materialize
+    $('select').formSelect();
+
     let form = $('form[name=announces]');
-    //if(form[0]) setFormHandlers();
+    if(form[0]) setFormHandlers();
 
 });
 
