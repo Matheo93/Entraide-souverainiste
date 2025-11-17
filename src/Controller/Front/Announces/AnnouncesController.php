@@ -12,6 +12,7 @@ use App\Repository\CategoriesRepository;
 use App\Repository\UserRepository;
 use App\Service\MainService;
 use App\Service\DiscordModerationService;
+use App\Service\RecaptchaService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,6 +35,7 @@ class AnnouncesController extends AbstractController {
     private $userPasswordEncoder;
     private $mainService;
     private $discordModerationService;
+    private $recaptchaService;
 
 
     public function __construct(
@@ -44,7 +46,8 @@ class AnnouncesController extends AbstractController {
         SluggerInterface $slugger,
         UserPasswordEncoderInterface $userPasswordEncoder,
         MainService $mainService,
-        DiscordModerationService $discordModerationService
+        DiscordModerationService $discordModerationService,
+        RecaptchaService $recaptchaService
     ){
         $this->userRepository = $userRepository;
         $this->categoriesRepository = $categoriesRepository;
@@ -54,6 +57,7 @@ class AnnouncesController extends AbstractController {
         $this->userPasswordEncoder = $userPasswordEncoder;
         $this->mainService = $mainService;
         $this->discordModerationService = $discordModerationService;
+        $this->recaptchaService = $recaptchaService;
 
     }
 
@@ -67,6 +71,16 @@ class AnnouncesController extends AbstractController {
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Vérifier le reCAPTCHA
+            $recaptchaResponse = $request->request->get('g-recaptcha-response');
+            if (!$this->recaptchaService->verify($recaptchaResponse, $request->getClientIp())) {
+                $this->addFlash('error', 'Veuillez valider le captcha de sécurité.');
+                return $this->render('front/announces/add.html.twig', [
+                    'announce' => $announce,
+                    'form' => $form->createView(),
+                ]);
+            }
+
             $em = $this->getDoctrine()->getManager();
 
             $requestAnnounce  = $request->request->get('announces');

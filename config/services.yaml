@@ -18,6 +18,7 @@ parameters:
   webmaster_contact_email: "%env(DEV_CONTACT_EMAIL)%"
   dev_contact_email: "%env(DEV_CONTACT_EMAIL)%"
   discord_moderation_webhook_url: "%env(DISCORD_MODERATION_WEBHOOK_URL)%"
+  recaptcha_secret_key: "%env(RECAPTCHA_SECRET_KEY)%"
 
 services:
     # default configuration for services in *this* file
@@ -48,6 +49,11 @@ services:
     App\Service\DiscordModerationService:
         arguments:
             $discordModerationWebhookUrl: '%discord_moderation_webhook_url%'
+
+    # reCAPTCHA service
+    App\Service\RecaptchaService:
+        arguments:
+            $recaptchaSecretKey: '%recaptcha_secret_key%'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
