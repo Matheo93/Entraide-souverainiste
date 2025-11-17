@@ -32,3 +32,8 @@ logs/
 backups/
 bot.log
 ###< Fichiers confidentiels et production ###
+
+###> Documentation ###
+*.md
+!README.md
+###< Documentation ###
